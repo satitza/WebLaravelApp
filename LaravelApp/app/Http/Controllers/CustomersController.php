@@ -21,14 +21,12 @@ class CustomersController extends Controller {
                 'version' => 'wc/v2',
                     ]
             );
-            //print_r($woocommerce->get('customers'));
             $CustomersArray = $woocommerce->get('customers');
             return view('list_customers')->with('CustomersArray', $CustomersArray);
         } catch (Exception $e) {
             echo "Error cannot list all customers : " . $e;
             unset($e);
         }
-        return view('list_customers');
     }
 
     public function GetCustomer($customer_id) {
@@ -39,7 +37,10 @@ class CustomersController extends Controller {
                 'version' => 'wc/v2',
                     ]
             );
-            print_r($woocommerce->get('customers/'.$customer_id));
+            //print_r($woocommerce->get('customers/'.$customer_id));
+            $CustomersArray = $woocommerce->get('customers/'.$customer_id);
+            echo $CustomersArray["id"];   
+            //return view('list_customers')->with('CustomersArray', $CustomersArray);
         } catch (Exception $e) {
             echo "Error cannot get customer information from id : " . $customer_id . "/r/n" . $e;
         }
