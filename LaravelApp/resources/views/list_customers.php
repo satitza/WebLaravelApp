@@ -7,6 +7,37 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>        
     </head>
     <body>
+        <!-----------------------------------------------Header Menu------------------------------------------------------>
+        <ul class="nav nav-tabs navbar-custom">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Main</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ url('/list_customers')}}">List All Customers</a>
+                    <a class="dropdown-item" href="#">Get Customer</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">List All Orders</a>
+                    <a class="dropdown-item" href="#">Get Order</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">List All Products</a>
+                    <a class="dropdown-item" href="#">Get Product</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </ul>
+        <!--------------------------------------------------------------------------------------------------------------->
 
     <center><table border="1">
             <tbody>

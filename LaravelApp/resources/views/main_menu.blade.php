@@ -7,18 +7,36 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     </head>
     <body>
-    <center><table border="1">
-            <tbody>
-                <tr>
-                    <td width="300"></td>
-                    <td width="1000"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table></center>
-
+        <!-----------------------------------------------Header Menu------------------------------------------------------>
+        <ul class="nav nav-tabs navbar-custom">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Main</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ url('/list_customers')}}">List All Customers</a>
+                    <a class="dropdown-item" href="#">Get Customer</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ url('/list_orders') }}">List All Orders</a>
+                    <a class="dropdown-item" href="#">Get Order</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">List All Products</a>
+                    <a class="dropdown-item" href="#">Get Product</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+        </ul>
+        <!--------------------------------------------------------------------------------------------------------------->
     </body>
 </html>
