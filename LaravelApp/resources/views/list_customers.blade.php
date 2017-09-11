@@ -10,12 +10,12 @@
         <!-----------------------------------------------Header Menu------------------------------------------------------>
         <ul class="nav nav-tabs navbar-custom">
             <li class="nav-item">
-                <a class="nav-link" href="#">Main</a>
+                <a class="nav-link" href="{{url('main')}}">Main</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ url('/list_customers')}}">List All Customers</a>
+                    <a class="dropdown-item" href="{{ url('list_customers')}}">List All Customers</a>
                     <a class="dropdown-item" href="#">Get Customer</a>
                     <div class="dropdown-divider"></div>
                 </div>
@@ -23,7 +23,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">List All Orders</a>
+                    <a class="dropdown-item" href="{{url('list_orders')}}">List All Orders</a>
                     <a class="dropdown-item" href="#">Get Order</a>
                     <div class="dropdown-divider"></div>
                 </div>
@@ -78,8 +78,9 @@
                             echo "<td>" . $value["billing"]["phone"] . "</td>";
                             echo "<td>" . $value["orders_count"] . "</td>";
                             echo "<td>" . $value["total_spent"] . "</td>";
-                            echo "<td><href='#' button type='button' class='btn btn-success'>View</button></td>";
-
+                            ?>
+                            <td><a href="{{url('get_customer/'.$value["id"])}}" button type='button' class='btn btn-success'>View</button></td>
+                            <?php
                             echo "</tr>";
                             echo "</tbody>";
                         }
@@ -87,9 +88,9 @@
                         echo "</table>";
                         echo "</div>";
                         ?> 
-                    </td>
+                </td>
                 </tr>
-            </tbody>
+                </tbody>
         </table></center>
 </body>
 </html>

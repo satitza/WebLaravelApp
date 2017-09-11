@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('main', function() {
-    return view('main_menu'); 
+    return view('main_menu');
 });
 
 Route::get('check_login', function () {
@@ -25,5 +25,7 @@ Route::get('check_login', function () {
 //Route::post('check_login', 'LoginController@CheckLogin');
 
 Route::get('list_customers', 'CustomersController@ListAllCustomers');
+
+Route::get('get_customer/{id}', 'CustomersController@GetCustomer');
 
 Route::get('list_orders', 'OrdersController@ListAllOrders');

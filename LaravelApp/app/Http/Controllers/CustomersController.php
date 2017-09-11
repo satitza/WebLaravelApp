@@ -32,7 +32,17 @@ class CustomersController extends Controller {
     }
 
     public function GetCustomer($customer_id) {
-        
+        try {
+            $woocommerce = new Client(
+                    wc_host, consumer_key, consumer_secret, [
+                'wp_api' => true,
+                'version' => 'wc/v2',
+                    ]
+            );
+            print_r($woocommerce->get('customers/'.$customer_id));
+        } catch (Exception $e) {
+            echo "Error cannot get customer information from id : " . $customer_id . "/r/n" . $e;
+        }
     }
 
     public function UpdateCustomer(Array $customer_data) {

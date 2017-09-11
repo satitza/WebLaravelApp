@@ -11,12 +11,12 @@
         <!-----------------------------------------------Header Menu------------------------------------------------------>
         <ul class="nav nav-tabs navbar-custom">
             <li class="nav-item">
-                <a class="nav-link" href="#">Main</a>
+                <a class="nav-link" href="{{url('main')}}">Main</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ url('/list_customers')}}">List All Customers</a>
+                    <a class="dropdown-item" href="{{ url('list_customers')}}">List All Customers</a>
                     <a class="dropdown-item" href="#">Get Customer</a>
                     <div class="dropdown-divider"></div>
                 </div>
@@ -24,7 +24,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ url('/list_orders') }}">List All Orders</a>
+                    <a class="dropdown-item" href="{{ url('list_orders') }}">List All Orders</a>
                     <a class="dropdown-item" href="#">Get Order</a>
                     <div class="dropdown-divider"></div>
                 </div>
