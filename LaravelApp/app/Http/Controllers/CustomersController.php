@@ -11,9 +11,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Automattic\WooCommerce\Client;
 
-class OrdersController extends Controller {
+class CustomersController extends Controller {
 
-    public function ListAllOrders() {
+    public function ListAllCustomers() {
         try {
             $woocommerce = new Client(
                     wc_host, consumer_key, consumer_secret, [
@@ -21,23 +21,25 @@ class OrdersController extends Controller {
                 'version' => 'wc/v2',
                     ]
             );
-            $OrdersArray = $woocommerce->get('orders');
-            return view('list_orders')->with('OrdersArray', $OrdersArray);
+            //print_r($woocommerce->get('customers'));
+            $CustomersArray = $woocommerce->get('customers');
+            return view('list_customers')->with('CustomersArray', $CustomersArray);
         } catch (Exception $e) {
-            echo "Error cannot list all order : " . $e;
+            echo "Error cannot list all customers : " . $e;
             unset($e);
         }
+        return view('list_customers');
     }
 
-    public function GetOrder($order_id) {
+    public function GetCustomer($customer_id) {
         
     }
 
-    public function UpdateOrder(Array $order_dara) {
+    public function UpdateCustomer(Array $customer_data) {
         
     }
 
-    public function DeleteOrder($order_id) {
+    public function DeleteCustomer($customer_id) {
         
     }
 
