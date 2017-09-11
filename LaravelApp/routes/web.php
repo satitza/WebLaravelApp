@@ -12,8 +12,13 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+Route::get('check_login', function (){
+    echo "test";
+});
+//Route::post('check_login', 'LoginController@CheckLogin');
 
 Route::get('list_customers', 'CustomersController@ListAllCustomers');
 
