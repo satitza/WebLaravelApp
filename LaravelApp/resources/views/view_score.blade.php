@@ -19,7 +19,6 @@
                         echo "<thead>";
                         echo "<tr>";
                         echo "<th>รหัส</th>";
-                        echo "<th>วันที่สมัคร</th>";
                         echo "<th>ชื่อ-นามสกุล</th>";
                         echo "<th>บริษัท</th>";
                         echo "<th>บ้านเลขที่ หรือ ถนน</th>";
@@ -36,7 +35,6 @@
                         echo "<tr>";
 
                         echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["date_created"] . "</td>";
                         echo "<td>" . $CustomersArray["first_name"]." ".$CustomersArray["last_name"] . "</td>";
                         echo "<td>" . $CustomersArray["shipping"]["company"] . "</td>";
                         echo "<td>" . $CustomersArray["shipping"]["address_1"] . "</td>";
@@ -44,6 +42,7 @@
                         echo "<td>" . $CustomersArray["shipping"]["city"] . "</td>";
                         echo "<td>" . $CustomersArray["shipping"]["postcode"] . "</td>";
                         echo "<td>" . $CustomersArray["total_spent"] . "</td>";
+                        echo "<td>" . $CustomersArray["total_spent"]/50 . "</td>";
 
 
                         echo "</tr>";
@@ -54,6 +53,9 @@
                         echo "</div>";
                         ?> 
                     </td>
+                </tr>
+                <tr>
+                    <td></td>
                 </tr>
             </tbody>
         </table></center>

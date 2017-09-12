@@ -34,5 +34,4 @@ class ViewScoresController extends Controller {
             unset($e);
         }
     }
-
 }
