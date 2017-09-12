@@ -40,13 +40,5 @@
         <!--------------------------------------------------------------------------------------------------------------->
         
         
-        <?php
-        
-           $id = 14;
-           echo "<a href='http://127.0.0.1:8000/get_customer/<?php $id; ?>' class='btn btn-info' role='button'>PHP</a>";
-        
-        ?>
-        <a href="http://127.0.0.1:8000/get_customer/<?php $id; ?>" class="btn btn-info" role="button">HTML</a>
-        
     </body>
 </html>

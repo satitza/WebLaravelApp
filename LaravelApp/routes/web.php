@@ -11,6 +11,9 @@
   |
  */
 
+Route::get('view_score/{id}', 'ViewScoresController@ViewCustomerSocres');
+
+
 Route::get('/', function () {
     return view('login');
 });
@@ -22,10 +25,13 @@ Route::get('main', function() {
 Route::get('check_login', function () {
     echo "test";
 });
-//Route::post('check_login', 'LoginController@CheckLogin');
+
+//------------------------------------------------------------------------------------------------------
 
 Route::get('list_customers', 'CustomersController@ListAllCustomers');
 
 Route::get('get_customer/{id}', 'CustomersController@GetCustomer');
+
+//-----------------------------------------------------------------------------------------------------
 
 Route::get('list_orders', 'OrdersController@ListAllOrders');
