@@ -39,8 +39,7 @@ class CustomersController extends Controller {
             );
             //print_r($woocommerce->get('customers/'.$customer_id));
             $CustomersArray = $woocommerce->get('customers/'.$customer_id);
-            echo $CustomersArray["id"];   
-            //return view('list_customers')->with('CustomersArray', $CustomersArray);
+            return view('get_customer')->with('CustomersArray', $CustomersArray);
         } catch (Exception $e) {
             echo "Error cannot get customer information from id : " . $customer_id . "/r/n" . $e;
         }
