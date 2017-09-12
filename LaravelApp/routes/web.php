@@ -11,8 +11,14 @@
   |
  */
 
-Route::get('view_score/{id}', 'ViewScoresController@ViewCustomerSocres');
+Route::get('test_en', 'ManageKeyController@TestEncrypt');
 
+//------------------------------------------------------------------------------------------------
+
+Route::get('view_score/{encryptedID}/{encryptedKey}', 'ViewScoresController@ViewCustomerSocres');
+
+
+//--------------------------------------------------------------------------------------------------
 
 Route::get('/', function () {
     return view('login');
@@ -35,3 +41,5 @@ Route::get('get_customer/{id}', 'CustomersController@GetCustomer');
 //-----------------------------------------------------------------------------------------------------
 
 Route::get('list_orders', 'OrdersController@ListAllOrders');
+
+//------------------------------------------------------------------------------------------------------

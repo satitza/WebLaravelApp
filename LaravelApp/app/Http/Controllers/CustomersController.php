@@ -16,7 +16,7 @@ class CustomersController extends Controller {
     public function ListAllCustomers() {
         try {
             $woocommerce = new Client(
-                    wc_host, consumer_key, consumer_secret, [
+                    wc_host_perflexgroup, consumer_key, consumer_secret, [
                 'wp_api' => true,
                 'version' => 'wc/v2',
                     ]
@@ -32,7 +32,7 @@ class CustomersController extends Controller {
     public function GetCustomer($customer_id) {
         try {
             $woocommerce = new Client(
-                    wc_host, consumer_key, consumer_secret, [
+                    wc_host_perflexgroup, consumer_key, consumer_secret, [
                 'wp_api' => true,
                 'version' => 'wc/v2',
                     ]

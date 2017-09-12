@@ -8,27 +8,24 @@
     </head>
     <body>
 
-    <center><table border="1">
+    <center><table border="0">
             <tbody>
                 <tr>
-                    <td width="900">
+                    <td>
                         <?php
                         echo "<div class='container-fluid'>";
-                        echo "<center><h3>List All Customers</h2></center>";
+                        echo "<center><h4>รายละเอียดสะสมแต้มของสามชิก</h4></center>";
                         echo "<table class='table table-striped'>";
                         echo "<thead>";
                         echo "<tr>";
                         echo "<th>รหัส</th>";
                         echo "<th>วันที่สมัคร</th>";
-                        echo "<th>ชื่อผู้ใช้งาน</th>";
                         echo "<th>ชื่อ-นามสกุล</th>";
                         echo "<th>บริษัท</th>";
                         echo "<th>บ้านเลขที่ หรือ ถนน</th>";
                         echo "<th>อพาร์ทเม้นท์</th>";
-                        echo "<th>จังหวัด</th>";
-                        echo "<th>ประเทศ</th>";
+                        echo "<th>อำเภอ</th>";
                         echo "<th>รหัสไปรษณีย์</th>";
-                        echo "<th>จำนวนออเดอร์ที่สั่งใว้</th>";
                         echo "<th>รวมยอดเงิน</th>";
                         echo "<th>คะแนนสะสม</th>";
 
@@ -40,17 +37,13 @@
 
                         echo "<td>" . $CustomersArray["id"] . "</td>";
                         echo "<td>" . $CustomersArray["date_created"] . "</td>";
-                        echo "<td>" . $CustomersArray["username"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
+                        echo "<td>" . $CustomersArray["first_name"]." ".$CustomersArray["last_name"] . "</td>";
+                        echo "<td>" . $CustomersArray["shipping"]["company"] . "</td>";
+                        echo "<td>" . $CustomersArray["shipping"]["address_1"] . "</td>";
+                        echo "<td>" . $CustomersArray["shipping"]["address_2"] . "</td>";
+                        echo "<td>" . $CustomersArray["shipping"]["city"] . "</td>";
+                        echo "<td>" . $CustomersArray["shipping"]["postcode"] . "</td>";
+                        echo "<td>" . $CustomersArray["total_spent"] . "</td>";
 
 
                         echo "</tr>";
@@ -64,22 +57,5 @@
                 </tr>
             </tbody>
         </table></center>
-    <?php
-    echo $CustomersArray["id"] . "<br>";
-    echo $CustomersArray["date_created"] . "<br>";
-    echo $CustomersArray["username"] . "<br>";
-    echo $CustomersArray["shipping"]["first_name"] . "<br>";
-    echo $CustomersArray["shipping"]["last_name"] . "<br>";
-    echo $CustomersArray["shipping"]["company"] . "<br>";
-    echo $CustomersArray["shipping"]["address_1"] . "<br>";
-    echo $CustomersArray["shipping"]["address_2"] . "<br>";
-    echo $CustomersArray["shipping"]["city"] . "<br>";
-    echo $CustomersArray["shipping"]["state"] . "<br>";
-    echo $CustomersArray["shipping"]["postcode"] . "<br>";
-    echo $CustomersArray["shipping"]["country"] . "<br>";
-    echo $CustomersArray["orders_count"] . "<br>";
-    echo $CustomersArray["total_spent"] . "<br>";
-    echo "Score is : 5555";
-    ?>
 </body>
 </html>
