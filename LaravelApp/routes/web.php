@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('main', function() {
-    return view('main_menu');
+    return view('main_menu');   
 });
 
 Route::get('check_login', function () {

@@ -17,7 +17,6 @@
                 <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('list_customers')}}">List All Customers</a>
-                    <a class="dropdown-item" href="#">Get Customer</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -25,7 +24,6 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{url('list_orders')}}">List All Orders</a>
-                    <a class="dropdown-item" href="#">Get Order</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -33,61 +31,56 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">List All Products</a>
-                    <a class="dropdown-item" href="#">Get Product</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
         </ul>
         <!--------------------------------------------------------------------------------------------------------------->
-
-    <center><table border="1">
+        <br></br>
+    <center><table border="0" width="">
             <tbody>
                 <tr>
-                    <td width="400"></td>
-                    <td width="900">
-                        <?php
-                        echo "<div class='container-fluid'>";
-                        echo "<center><h3>List All Customers</h2></center>";
-                        echo "<table class='table table-striped'>";
-                        echo "<thead>";
-                        echo "<tr>";
-                        echo "<th>ID</th>";
-                        echo "<th>Username</th>";
-                        echo "<th>Date Created</th>";
-                        echo "<th>Date Modified</th>";
-                        echo "<th>First Name</th>";
-                        echo "<th>Last Name</th>";
-                        echo "<th>E-Mail</th>";
-                        echo "<th>Phone</th>";
-                        echo "<th>Orders Count</th>";
-                        echo "<th>Total Spent</th>";
-                        echo "<th>View Order</th>";
-                        echo "</tr>";
-                        echo "</thead>";
-
-                        echo "<tbody>";
-                        echo "<tr>";
-
-                        echo "<td>" . $CustomersArray["id"] . "</td>";
-                        echo "<th>" . $CustomersArray["username"] . "</td>";
-                        echo "<td>" . $CustomersArray["date_created"] . "</td>";
-                        echo "<td>" . $CustomersArray["date_modified"] . "</td>";
-                        echo "<td>" . $CustomersArray["first_name"] . "</td>";
-                        echo "<td>" . $CustomersArray["last_name"] . "</td>";
-                        echo "<td>" . $CustomersArray["email"] . "</td>";
-                        echo "<td>" . $CustomersArray["billing"]["phone"] . "</td>";
-                        echo "<td>" . $CustomersArray["orders_count"] . "</td>";
-                        echo "<td>" . $CustomersArray["total_spent"] . "</td>";
-                        ?>
-                    <td><a href="{{url('get_customer/'.$CustomersArray["id"])}}" button type='button' class='btn btn-success'>View</button></td>
-                    <?php
-                    echo "</tr>";
-                    echo "</tbody>";
-
-
-                    echo "</table>";
-                    echo "</div>";
-                    ?> 
+                    <td width="300"> <label>ID</label></td>
+                    <td width="500"><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="ID" value="<?php echo $CustomersArray["id"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Username" value="<?php echo $CustomersArray["username"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Date Created</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Date Created" value="<?php echo $CustomersArray["date_created"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Name" value="<?php echo $CustomersArray["first_name"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Last Name" value="<?php echo $CustomersArray["last_name"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>E-Mail</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="E-Mail Address" value="<?php echo $CustomersArray["email"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Phone" value="<?php echo $CustomersArray["billing"]["phone"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Orders Count</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Order Count" value="<?php echo $CustomersArray["orders_count"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Total Spent</td>
+                    <td><input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Total Spent" value="<?php echo $CustomersArray["total_spent"] ?>"></td>
+                </tr>
+                <tr>
+                    <td>Customer Score</td>
+                    <td>
+                        <input type="email" class="form-control" id="text_id" aria-describedby="" placeholder="Customer Score" value="<?php 
+                        if ($CustomersArray["total_spent"] < 50){ echo "0.00";}
+                        else{ echo $CustomersArray["total_spent"] / 50; } ?>">
                     </td>
                 </tr>
             </tbody>

@@ -44,8 +44,8 @@
             <tbody>
                 <tr>
                     </td>
-                    <td width = '400'></td>
-                    <td width="900">
+                    <!--td width = '400'></td-->
+                    <td width="">
                         <?php
                         echo "<div class='container-fluid'>";
                         echo "<center><h3>List All Orders</h2></center>";
@@ -56,12 +56,12 @@
                         echo "<th>Create VIA</th>";
                         echo "<th>Status</th>";
                         echo "<th>Date Created</th>";
-                        echo "<th>Date Modified</th>";
-                        echo "<th>Discount Total</th>";
                         echo "<th>Total</th>";
                         echo "<th>Customer ID</th>";
+                        echo "<th>Product ID</th>";
                         echo "<th>IP Address</th>";
                         echo "<th>View Customer</th>";
+                        echo "<th>View Product</th>";
                         echo "</tr>";
                         echo "</thead>";
 
@@ -73,11 +73,11 @@
                             echo "<td>" . $value["created_via"] . "</td>";
                             echo "<td>" . $value["status"] . "</td>";
                             echo "<td>" . $value["date_created"] . "</td>";
-                            echo "<td>" . $value["date_modified"] . "</td>";
-                            echo "<td>" . $value["discount_total"] . "</td>";
                             echo "<td>" . $value["total"] . "</td>";
                             echo "<td>" . $value["customer_id"] . "</td>";
+                            echo "<td>" . $value["line_items"][0]["product_id"] . "</td>";
                             echo "<td>" . $value["customer_ip_address"] . "</td>";
+                            echo "<td><href='#' button type='button' class='btn btn-success'>View</button></td>";
                             echo "<td><href='#' button type='button' class='btn btn-success'>View</button></td>";
 
                             echo "</tr>";

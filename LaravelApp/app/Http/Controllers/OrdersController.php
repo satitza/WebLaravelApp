@@ -22,6 +22,8 @@ class OrdersController extends Controller {
                 'version' => 'wc/v2',
                     ]
             );
+            //header('Content-Type: application/json');
+            //print_r($woocommerce->get('orders'));
             $OrdersArray = $woocommerce->get('orders');
             return view('list_orders')->with('OrdersArray', $OrdersArray);
         } catch (Exception $e) {
