@@ -43,3 +43,5 @@ Route::get('get_customer/{id}', 'CustomersController@GetCustomer');
 Route::get('list_orders', 'OrdersController@ListAllOrders');
 
 //------------------------------------------------------------------------------------------------------
+
+Route::get('system_status/{wc_host}', 'SystemStatusController@ListAllSystemStatus');

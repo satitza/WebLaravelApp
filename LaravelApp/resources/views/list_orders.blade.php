@@ -17,7 +17,6 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customers</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('list_customers')}}">List All Customers</a>
-                    <a class="dropdown-item" href="#">Get Customer</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -25,7 +24,6 @@
                 <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ url('list_orders') }}">List All Orders</a>
-                    <a class="dropdown-item" href="#">Get Order</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -33,13 +31,13 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">List All Products</a>
-                    <a class="dropdown-item" href="#">Get Product</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
         </ul>
         <!--------------------------------------------------------------------------------------------------------------->
-
+        <br></br>
+        <hr></hr>
     <center><table border="1">
             <tbody>
                 <tr>

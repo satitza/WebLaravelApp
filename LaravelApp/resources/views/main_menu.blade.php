@@ -41,18 +41,19 @@
         </ul>
 
         <!------------------------------------------------------------------------------------------------------------------>  
-        
-        <center><table border="1">
-                <tr>
-                    <td width="400">Menu</td>
-                    <td width="900">Content</td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </table></center>
+        <br></br>
+        <hr></hr>
+    <center><table border="1">
+            <tr>
+                <td width="400">Menu</td>
+                <td width="900">Content</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table></center>
 
 
 
-    </body>
+</body>
 </html>

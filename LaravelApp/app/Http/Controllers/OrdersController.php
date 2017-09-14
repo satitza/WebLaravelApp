@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Form;
 use Automattic\WooCommerce\Client;
+header('Content-Type: application/json');
 
 class OrdersController extends Controller {
 
