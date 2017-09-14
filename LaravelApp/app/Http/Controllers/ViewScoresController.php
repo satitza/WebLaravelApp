@@ -20,13 +20,14 @@ class ViewScoresController extends Controller {
                 'wp_api' => true,
                 'version' => 'wc/v2',
                     ]
-            );           
-            
+            );
+
             if (md5(wc_view_score_key) == $encryptedKey) {
                 $customer_id = base64_decode($encryptedID);
                 $CustomersArray = $woocommerce->get('customers/' . $customer_id);
                 return view('view_score')->with('CustomersArray', $CustomersArray);
             } else {
+                //abort(403);
                 echo "Error Invalid key";
             }
         } catch (Exception $e) {
