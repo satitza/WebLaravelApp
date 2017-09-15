@@ -13,26 +13,46 @@ use Automattic\WooCommerce\Client;
 
 class ViewScoresController extends Controller {
 
-    public function ViewCustomerSocres($encryptedID, $encryptedKey) {
+    public function ViewCustomerSocres($encodedID, $encryptedKey) {
+        if (md5(wc_view_score_key_perflexgroup) == $encryptedKey) {
+            $customers_id = base64_decode($encodedID);
+            $wc_hos = wc_host_perflexgroup;
+            $consumer_key = consumer_key_perflexgroup;
+            $consumer_secret = consumer_secret_perflexgroup;
+        } else {
+            echo "Invalid key or customer id";
+            return;
+        }
         try {
             $woocommerce = new Client(
-                    wc_host_perflexgroup, consumer_key, consumer_secret, [
+                    $wc_hos, $consumer_key, $consumer_secret, [
                 'wp_api' => true,
                 'version' => 'wc/v2',
                     ]
             );
-
-            if (md5(wc_view_score_key) == $encryptedKey) {
-                $customer_id = base64_decode($encryptedID);
-                $CustomersArray = $woocommerce->get('customers/' . $customer_id);
-                return view('view_score')->with('CustomersArray', $CustomersArray);
+            $CustomersArray = $woocommerce->get('customers/' . $customers_id);
+            if ($CustomersArray["total_spent"] > 50) {
+                $scores = $CustomersArray["total_spent"] / 50;
             } else {
-                //abort(403);
-                echo "Error Invalid key";
+                $scores = 0.00;
             }
+            $Customer = [
+                'id' => $CustomersArray["id"],
+                'first_name' => $CustomersArray["first_name"],
+                'last_name' => $CustomersArray["last_name"],
+                'company' => $CustomersArray["shipping"]["company"],
+                'address_1' => $CustomersArray["shipping"]["address_1"],
+                'address_2' => $CustomersArray["shipping"]["address_2"],
+                'city' => $CustomersArray["shipping"]["city"],
+                'postcode' => $CustomersArray["shipping"]["postcode"],
+                'total_spent' => $CustomersArray["total_spent"],
+                'scores' => $scores
+            ];
+            return view('/promotion/view_score')->with('Customer', $Customer);
         } catch (Exception $e) {
-            echo "Error : " . $e;
-            unset($e);
+            echo $e;
+            return;
         }
     }
+
 }
