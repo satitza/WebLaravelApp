@@ -30,7 +30,7 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <?php /*{{ config('app.name', 'Laravel') }} */?>
-                        Reward Points
+                        ระบบคำนวนแต้มสมาชิก
                     </a>
                 </div>
 
@@ -44,9 +44,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('login') }}">เข้าสู่ระบบ</a></li>
                             <?php //{{ route('register') }} ?>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="#">สร้างผู้ใช้งาน</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -58,7 +58,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            ออกจากระบบ
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
