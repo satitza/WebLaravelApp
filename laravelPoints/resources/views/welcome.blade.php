@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">Customers</a>
+                    <a href="{{ url('customers') }}">Customers</a>
                     <a href="#">Reward History</a>
                     <a href="#">Reward Stock</a>
                     <a href="#">Settings</a>
