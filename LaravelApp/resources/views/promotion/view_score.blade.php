@@ -45,21 +45,10 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-        <div class="alert alert-info" role="alert">
-            สวัสดีครับท่านผู้อ่านทุกท่าน พบกับพวกเราทีมงาน iMoney.in.th ที่มาพร้อมกับสาระดีๆ เรื่องการเงิน สินเชื่อ บัตรเครดิต 
-            รวมถึงโปรโมชั่นต่างๆ ที่พร้อมพาทุกท่าน ตอบข้อสงสัยต่างๆที่ควรรู้ พร้อมทั้งความรู้ที่เป็นประโยนชน์มากมาย 
-            ถ้าหากเพื่อนๆที่ติดตามกันมาตลอดถ้ายังจำบทความที่ผ่านมาได้ กับ แลกคะแนนบัตรเครดิตไทยพาณิชย์ 2016 ที่อัพเดทล่าสุด
-            พร้อมกับความรู้ในบทความเรื่อง แต้มสะสมต่อบัตรเครดิต วันนี้ พวกเรา iMoney จะพาไปรู้จักกับเงื่อนไข บัตรเครดิตไทยพาณิชย์ แลกของรางวัล หรือ 
-            ใช้แต้มสะสมของการใช้จ่ายผ่านบัตร ที่เรียกว่า SCB Reward นั่นเองครับ เพราะว่าแต้มสะสมเหล่านี้ สามารถแลกรับเป็นของกำนัลต่างๆ รวมถึงส่วนลดต่างๆได้ครับ 
-            ซึ่งของรางวัลทั้งหมดอยู่ใน  SCB Rewards Catalog 2016 ซึ่งเป็นของปีล่าสุด ดังนั้นแล้ว เงื่อนไขการแลก วิธีใช้งานจะเป็นอย่างไร รวมถึงตัวอย่างของการแลกของรางวัลด้วย 
-            ถ้าพร้อมแล้วอย่ามัวเสียเวลา เราไปเริ่มกันเลยครับ
-        </div>
-    <center><img src="/images/gift2.jpg"></center>
     <center><table border="0">
             <tbody>
                 <tr>
                     <td>
-
                         <div class='container-fluid'>
                             <center><h4>รายละเอียดสะสมแต้มของสามชิก</h4></center>
                             <table class='table table-striped'>
@@ -100,6 +89,107 @@
                 </tr>
             </tbody>
         </table></center>
+    <div class="alert alert-info" role="alert">
+        <h3>วิธีการแลกของรางวัล</h3>
+        <ul>
+            <li>1. เลือกของรางวัลที่ต้องการ</li>
+            <li>2. xxxxxx</li>
+            <li>3. xxxxxx</li>
+            <li>3. xxxxxx</li>
+        </ul>
+    </div>
+    <center><table border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class='container-fluid'>
+                            <center><h4>รายการของรางวัล</h4></center>
+                            <table class='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th>รูปภาพ</th>
+                                        <th>คำอธิบาย</th>
+                                        <th>คะแนนที่ใช้แลก</th>
+                                        <th>แลกของรางวัล</th>
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_1.jpg"></td>
+                                        <td>
+                                            กระเป๋าเดินทาง<br>
+                                            ขนาด : 15 x 20 นิ้ว<br>
+                                            จำนวน : 2 ใบ
+                                        </td>
+                                        <td>60 คะแนน</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_2.jpg"></td>
+                                        <td>ไมโครเวฟ</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_3.jpg"></td>
+                                        <td>โทรศัพท์ Galexy 8</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_4.jpg"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_5.jpg"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_6.jpg"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_7.jpg"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_8.jpg"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_9.jpg"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/images/reward_images/rw_10.jpg"></td>
+                                        <td>สแปร์น้ำฉีดน้ำหอม</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table></center>
+    <br></br>
+    <br></br>
 </body>
 </html>

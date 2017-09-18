@@ -18,7 +18,7 @@ class OrdersController extends Controller {
     public function ListAllOrders() {
         try {
             $woocommerce = new Client(
-                    wc_host_perflexgroup, consumer_key, consumer_secret, [
+                    wc_host_perflexgroup, consumer_key_perflexgroup, consumer_secret_perflexgroup, [
                 'wp_api' => true,
                 'version' => 'wc/v2',
                     ]

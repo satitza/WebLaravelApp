@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('main', function() {
-    return view('main_menu');   
+    return view('main_menu');
 });
 
 Route::get('check_login', function () {
@@ -34,7 +34,7 @@ Route::get('check_login', function () {
 
 //------------------------------------------------------------------------------------------------------
 
-Route::get('list_customers', 'CustomersController@ListAllCustomers');
+Route::get('list_customers/{wc_host}', 'CustomersController@ListAllCustomers');
 
 Route::get('get_customer/{id}', 'CustomersController@GetCustomer');
 

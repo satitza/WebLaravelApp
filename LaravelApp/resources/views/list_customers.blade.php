@@ -40,52 +40,46 @@
     <center><table border="1">
             <tbody>
                 <tr>
-                    <td width="400"></td>
-                    <td width="900">
-                        <?php
-                        echo "<div class='container-fluid'>";
-                        echo "<center><h3>List All Customers</h2></center>";
-                        echo "<table class='table table-striped'>";
-                        echo "<thead>";
-                        echo "<tr>";
-                        echo "<th>ID</th>";
-                        echo "<th>Username</th>";
-                        echo "<th>Date Created</th>";
-                        echo "<th>Date Modified</th>";
-                        echo "<th>First Name</th>";
-                        echo "<th>Last Name</th>";
-                        echo "<th>E-Mail</th>";
-                        echo "<th>Phone</th>";
-                        echo "<th>Orders Count</th>";
-                        echo "<th>Total Spent</th>";
-                        echo "<th>View Order</th>";
-                        echo "</tr>";
-                        echo "</thead>";
+                    <td width="">
 
-                        foreach ($CustomersArray as $value) {
-                            echo "<tbody>";
-                            echo "<tr>";
+                        <div class='container-fluid'>
+                            <center><h3>{{ $host_name }}</h2></center>
+                            <table class='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th>รหัส</th>
+                                        <th>วันที่สมัครสมาชิก</th>
+                                        <th>อีเมล์</th>
+                                        <th>ชื่อ-นามสกุล</th>
+                                        <th>สิทธิผู้ใช้งาน</th>
+                                        <th>ชื่อผู้ใช้งาน</th>
+                                        <th>บริษัท</th>
+                                        <th>เบอร์โทรศัพท์</th>
+                                        <th>จำนวนครั้งที่สั่งของ</th>
+                                        <th>ยอดเงินสะสม</th>
+                                        <th>ดูรายละเอียด</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($CustomersArray as $user)
+                                <tbody>
+                                    <tr>
 
-                            echo "<td>" . $value["id"] . "</td>";
-                            echo "<th>" . $value["username"] . "</td>";
-                            echo "<td>" . $value["date_created"] . "</td>";
-                            echo "<td>" . $value["date_modified"] . "</td>";
-                            echo "<td>" . $value["first_name"] . "</td>";
-                            echo "<td>" . $value["last_name"] . "</td>";
-                            echo "<td>" . $value["email"] . "</td>";
-                            echo "<td>" . $value["billing"]["phone"] . "</td>";
-                            echo "<td>" . $value["orders_count"] . "</td>";
-                            echo "<td>" . $value["total_spent"] . "</td>";
-                            ?>
-                        <td><a href="{{url('get_customer/'.$value["id"])}}" button type='button' class='btn btn-success'>View</button></td>
-                        <?php
-                        echo "</tr>";
-                        echo "</tbody>";
-                    }
-
-                    echo "</table>";
-                    echo "</div>";
-                    ?> 
+                                        <td>{{ $user["id"] }}</td>
+                                        <th>{{ $user["date_created"] }}</td>
+                                        <td>{{ $user["email"] }}</td>
+                                        <td>{{ $user["first_name"]." ".$user["last_name"] }}</td>
+                                        <td>{{ $user["role"] }}</td>
+                                        <td>{{ $user["username"] }}</td>
+                                        <td>{{ $user["billing"]["company"] }}</td>
+                                        <td>{{ $user["billing"]["phone"] }}</td>
+                                        <td>{{ $user["orders_count"] }}</td>
+                                        <td>{{ $user["total_spent"] }}</td>
+                                        <td><a href="{{url('get_customer/'.$user["id"])}}" button type='button' class='btn btn-success'>View</button></td>
+                                        @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </td>
                 </tr>
             </tbody>

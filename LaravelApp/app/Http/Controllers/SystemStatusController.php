@@ -27,6 +27,7 @@ class SystemStatusController extends Controller {
             $consumer_secret = consumer_secret_jessiemum;
         } else {
             echo "Invalid Argument";
+            return;
         }
 
         try {
