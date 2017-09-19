@@ -22,6 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('/customers', 'CustomerController');
-Route::get('/find_customers', function () {
-    var_dump($_GET);
-});
+Route::post('/find_customers', 'CustomerController@FindCustomers');
+
