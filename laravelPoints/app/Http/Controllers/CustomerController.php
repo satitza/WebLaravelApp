@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CustomersUsers;
-use Automattic\WooCommerce\Client;
+use App\CustomersPoints;
 use App\WCHost;
+use Automattic\WooCommerce\Client;
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
 class CustomerController extends Controller {
@@ -23,6 +24,7 @@ class CustomerController extends Controller {
     public function index() {
         $wc_host_item = WCHost::all();
         $customers = CustomersUsers::all();
+        //$points = CustomersPoints::all();
         return view('customers.index')->with('wc_host_item', $wc_host_item)->with('customers', $customers);
     }
 
@@ -67,11 +69,36 @@ class CustomerController extends Controller {
                 $table->total_spent = $get_customers["total_spent"];
                 $table->from_host = $wc_host;
                 $table->save();
-                return redirect()->action('CustomerController@index');
+
+                if ($get_customers["total_spent"] < 50) {
+                    return redirect()->action('CustomerController@index');
+                } else {
+                    $points = $get_customers["total_spent"] / 50;
+                    $wc_id = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();
+
+                    $table1 = New CustomersPoints();
+                    $table1->customers_id = $get_customers["id"];
+                    $table1->points = $points;
+                    $table1->from_host = $wc_id->id;
+                    $table1->save();
+                    return redirect()->action('CustomerController@index');
+                }
             }
         } catch (HttpClientException $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function CalPoints(Request $request) {
+        if ($request->total_spent < 50) {
+            echo "จำนวนเงินไม่พอที่จะคำนวนเป็นคะแนนใด้";
+        } else {
+            $points = $request->total_spent / 50;
+            $table = New CustomersPoints();
+        }
+        //echo $request->customers_id."<br>";
+        //echo $request->total_spent."<br>";
+        //echo $request->from_host;
     }
 
     /**

@@ -43,8 +43,8 @@
                     <th>วันที่สมัครส</th>
                     <th>อีเมล์</th>
                     <th>ชื่อ-นามสกุล</th>
-                    <th>สิทธิผู้ใช้งาน</th>
-                    <th>ชื่อผู้ใช้งาน</th>
+                    <?php //<th>สิทธิผู้ใช้งาน</th> ?>
+                    <?php //<th>ชื่อผู้ใช้งาน</th> ?>
                     <th>บริษัท</th>
                     <th>เบอร์โทรศัพท์</th>
                     <th>ออเดอร์</th>
@@ -60,14 +60,22 @@
                     <td>{{ $users->date_created }}</td>
                     <td>{{ $users->email }}</td>
                     <td>{{ $users->first_name }} {{ $users->last_name}}</td>
-                    <td>{{ $users->role }}</td>
-                    <td>{{ $users->username }}</td>
+                    <?php //<td>{{ $users->role }}</td> ?>
+                    <?php //<td>{{ $users->username }}</td> ?>
                     <td>{{ $users->company }}</td>
                     <td>{{ $users->phone }}</td>
                     <td>{{ $users->orders_count }}</td>
                     <td>{{ $users->total_spent }}</td>
                     <td>{{ $users->from_host }}</td>
-                    <td></td>                
+                    <td></td>
+                    <td>
+                        {!! Form::open(['url' => 'cal_points']) !!}
+                        {{ Form::hidden('customers_id', $users->customers_id) }}
+                        {{ Form::hidden('total_spent', $users->total_spent) }}
+                        {{ Form::hidden('from_host', $users->from_host) }}
+                        {{ Form::submit('คำนวนคะแนน', ['class' => 'btn btn-primary']) }}
+                        {!! Form::close() !!}   
+                    </td>                
                 </tr>
                 @endforeach
             </tbody>
