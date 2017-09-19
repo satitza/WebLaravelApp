@@ -22,8 +22,8 @@ class CustomerController extends Controller {
     //Query All From Table Customer User And Return to view
     public function index() {
         $wc_host_item = WCHost::all();
-        //$customers = New CustomersUser();
-        return view('customers.index')->with('wc_host_item', $wc_host_item);
+        $customers = CustomersUsers::all();
+        return view('customers.index')->with('wc_host_item', $wc_host_item)->with('customers', $customers);
     }
 
     /**
@@ -67,6 +67,7 @@ class CustomerController extends Controller {
                 $table->total_spent = $get_customers["total_spent"];
                 $table->from_host = $wc_host;
                 $table->save();
+                return redirect()->action('CustomerController@index');
             }
         } catch (HttpClientException $e) {
             echo $e->getMessage();

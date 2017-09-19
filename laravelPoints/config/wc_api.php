@@ -15,7 +15,7 @@ define('consumer_secret_perflexgroup', 'cs_e519f484e2c109b04b5ae1df48d7495f3bd6c
 
 
 //Define woocommerce jessiemum API Server
-define('wc_host_jessiemum', 'http://www.jessiemum.com/');
+define('wc_host_jessiemum', 'http://www.jessiemum.com');
 //Define Consumer Key
 define('consumer_key_jessiemum', 'ck_dd17466b64ab9f15371962a1c04e27c852635c39');
 //Deine Consumer Secret
