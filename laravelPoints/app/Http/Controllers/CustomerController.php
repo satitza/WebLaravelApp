@@ -25,6 +25,25 @@ class CustomerController extends Controller {
         $wc_host_item = WCHost::all();
         $customers = CustomersUsers::all();
         //$points = CustomersPoints::all();
+        /*$c = Customer::leftJoin('orders', function($join) {
+                    $join->on('customers.id', '=', 'orders.customer_id');
+                })
+                ->whereNull('orders.customer_id')
+                ->first([
+            'customers.id',
+            'customers.first_name',
+            'customers.last_name',
+            'customers.email',
+            'customers.phone',
+            'customers.address1',
+            'customers.address2',
+            'customers.city',
+            'customers.state',
+            'customers.county',
+            'customers.district',
+            'customers.postal_code',
+            'customers.country'
+        ]);*/
         return view('customers.index')->with('wc_host_item', $wc_host_item)->with('customers', $customers);
     }
 

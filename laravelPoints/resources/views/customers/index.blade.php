@@ -73,7 +73,7 @@
                         {{ Form::hidden('customers_id', $users->customers_id) }}
                         {{ Form::hidden('total_spent', $users->total_spent) }}
                         {{ Form::hidden('from_host', $users->from_host) }}
-                        {{ Form::submit('คำนวนคะแนน', ['class' => 'btn btn-primary']) }}
+                        {{ Form::submit('Update from server', ['class' => 'btn btn-primary']) }}
                         {!! Form::close() !!}   
                     </td>                
                 </tr>
