@@ -45,10 +45,10 @@ class CustomerController extends Controller {
     public function FindCustomers(Request $request) {
         $wc_host = $request->get('wc_item');
         $customers_id = $request->name;
-        $model = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();
+        $wc_key = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();
         try {
             $woocommerce = new Client(
-                    $model->wc_host, $model->consumer_key, $model->consumer_secret, [
+                    $wc_key->wc_host, $wc_key->consumer_key, $wc_key->consumer_secret, [
                 'wp_api' => true,
                 'version' => 'wc/v2',
                     ]
@@ -61,9 +61,9 @@ class CustomerController extends Controller {
             ) {
                 return redirect()->action('CustomerController@index');
             } else {
-                
+
                 $points = $get_customers["total_spent"] / 50;
-                
+
                 $table = New CustomersUsers();
                 $table->customers_id = $get_customers["id"];
                 $table->date_created = $get_customers["date_created"];
@@ -87,12 +87,29 @@ class CustomerController extends Controller {
     }
 
     public function CalPoints(Request $request) {
-        if ($request->total_spent < 50) {
-            echo "จำนวนเงินไม่พอที่จะคำนวนเป็นคะแนนใด้";
-        } else {
-            echo $request->from_host;
-            //$points = $request->total_spent / 50;
-            //$table = New CustomersPoints();
+        $wc_key = WCHost::where('wc_host', '=', $request->from_host)->firstOrFail();
+        try {
+            $woocommerce = new Client(
+                    $wc_key->wc_host, $wc_key->consumer_key, $wc_key->consumer_secret, [
+                'wp_api' => true,
+                'version' => 'wc/v2',
+                    ]
+            );
+            $get_customers = $woocommerce->get('customers/' . $request->customers_id);
+            $old_total = $request->total_spent;
+            $new_total = $get_customers["total_spent"];
+            $settlement = $new_total - $old_total;
+            $new_points = $settlement / 50;
+
+            return view('customers.cal_points', [
+                'old_total' => $old_total,
+                'old_points' => $request->points,
+                'new_total' => $new_total,
+                'settlement' => $settlement,
+                'new_points' => $new_points
+            ]);
+        } catch (HttpClientException $e) {
+            echo $e->getMessage();
         }
     }
 

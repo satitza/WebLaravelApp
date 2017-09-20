@@ -27,6 +27,7 @@
                     </div>
                     <br>
                     {{ Form::submit('ค้นหา', ['class' => 'btn btn-primary']) }}
+                    {{ csrf_field() }}
                     {!! Form::close() !!}                  
                 </div>
             </div>
@@ -73,7 +74,9 @@
                         {{ Form::hidden('customers_id', $users->customers_id) }}
                         {{ Form::hidden('total_spent', $users->total_spent) }}
                         {{ Form::hidden('from_host', $users->from_host) }}
-                        {{ Form::submit('Update from server', ['class' => 'btn btn-primary']) }}
+                        {{ Form::hidden('points', $users->points) }}
+                        {{ Form::submit('Update From Server', ['class' => 'btn btn-primary']) }}
+                        {{ csrf_field() }}
                         {!! Form::close() !!}   
                     </td>                
                 </tr>
