@@ -102,6 +102,7 @@ class CustomerController extends Controller {
             $new_points = $settlement / 50;
 
             return view('customers.cal_points', [
+                'customers_id' => $request->customers_id,
                 'old_total' => $old_total,
                 'old_points' => $request->points,
                 'new_total' => $new_total,
@@ -122,6 +123,21 @@ class CustomerController extends Controller {
     //Insert A New Customers
     public function store(Request $request) {
         //
+    }
+
+    public function AddPoints(Request $request) {
+        if ($request->ole_total == $request->new_total) {
+            return redirect()->action('CustomerController@index');
+        }
+        echo "ID " . $request->customers_id . "<br>";
+        echo "คะแนนใหม่ " . $request->new_points . "<br>";
+
+        $customers = CustomersUsers::where('customers_id', '=', $request->customers_id)->firstOrFail();
+        echo "คะแนนเดิม " . $old_points = $customers->points . "<br>";
+        echo "คะแนนเก่า + คะแนนใหม่ " . $sum_points = $request->new_points + $customers->points;
+        /*DB::table('customers_users')
+                ->where('customers_id', $request->customers_id)
+                ->update(['points' => $sum_points]);*/
     }
 
     /**
