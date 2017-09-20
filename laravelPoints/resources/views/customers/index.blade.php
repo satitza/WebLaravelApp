@@ -66,8 +66,8 @@
                     <td>{{ $users->phone }}</td>
                     <td>{{ $users->orders_count }}</td>
                     <td>{{ $users->total_spent }}</td>
-                    <td>{{ $users->from_host }}</td>
-                    <td></td>
+                    <td>{{ $users->from_host }}</td> 
+                    <td>{{ $users->points }}</td>
                     <td>
                         {!! Form::open(['url' => 'cal_points']) !!}
                         {{ Form::hidden('customers_id', $users->customers_id) }}
