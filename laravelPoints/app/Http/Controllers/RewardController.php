@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\RewardsStock;
+use Illuminate\Support\Facades\Input;
 
 class RewardController extends Controller {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -33,6 +38,10 @@ class RewardController extends Controller {
         //
     }
 
+    public function ShowFormAddReward() {
+        return view('rewards.add_reward');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,8 +49,34 @@ class RewardController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        return view('rewards.add_reward');
+        if (Input::hasFile('image')) {
+
+
+            echo "reward_name : " . $request->reward_name . "<br>";
+            echo "reward_detial : " . $request->reward_detial . "<br>";
+            echo "reward_amount : " . $request->reward_amount . "<br>";
+            echo "reward_points : " . $request->reward_points . "<br>";
+
+
+            $this->validate($request, [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+
+            $image = $request->file('image');
+            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+            echo "images name : " . $input['imagename'] . "<br>";
+            //$destinationPath = public_path('/reward_images');
+            //$image->move($destinationPath, $input['imagename']);
+
+
+            
+        } else {
+            echo "Images upload not found";
+        }
     }
+    
+    
 
     /**
      * Display the specified resource.
