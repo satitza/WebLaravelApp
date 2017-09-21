@@ -26,9 +26,9 @@
                             <td>{{ $reward->amount }}</td>
                             <td>{{ $reward->reward_points }}</td>
                             <th>
-                                {!! Form::open(['url' => '#']) !!}
+                                {!! Form::open(['url' => 'rewards_stock/edit']) !!}
                                 {{ Form::hidden('rewards_id', $reward->id) }}
-                                {{ Form::submit('Edit', ['class' => 'btn btn-primary']) }}                              
+                                {{ Form::submit('Edit Reward', ['class' => 'btn btn-primary']) }}                              
                                 {{ Form::token() }}
                                 {!! Form::close() !!}
                             </th>

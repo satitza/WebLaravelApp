@@ -27,6 +27,7 @@ Route::resource('/rewards_stock', 'RewardController');
 
 
 Route::post('/rewards_stock/form', 'RewardController@ShowFormAddReward');
+Route::post('/rewards_stock/edit', 'RewardController@EditReward');
 Route::post('/find_customers', 'CustomerController@FindCustomers');
 Route::post('/cal_points', 'CustomerController@CalPoints');
 Route::post('/add_points', 'CustomerController@AddPoints');

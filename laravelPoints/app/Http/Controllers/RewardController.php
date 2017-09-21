@@ -68,15 +68,14 @@ class RewardController extends Controller {
             echo "images name : " . $input['imagename'] . "<br>";
             //$destinationPath = public_path('/reward_images');
             //$image->move($destinationPath, $input['imagename']);
-
-
-            
         } else {
             echo "Images upload not found";
         }
     }
-    
-    
+
+    public function EditReward(Request $request) {
+        return view('rewards.edit_reward');
+    }
 
     /**
      * Display the specified resource.
