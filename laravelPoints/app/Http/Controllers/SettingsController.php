@@ -3,25 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\RewardsStock;
 
-class RewardController extends Controller {
-
+class SettingsController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        try {
-
-            $rewards = RewardsStock::all();
-            return view('rewards.index', [
-                'rewards' => $rewards
-            ]);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
+    public function index()
+    {
+        return view('settings.index');
     }
 
     /**
@@ -29,7 +21,8 @@ class RewardController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
@@ -39,8 +32,9 @@ class RewardController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        return view('rewards.add_reward');
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -49,7 +43,8 @@ class RewardController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -59,7 +54,8 @@ class RewardController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         //
     }
 
@@ -70,7 +66,8 @@ class RewardController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         //
     }
 
@@ -80,8 +77,8 @@ class RewardController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         //
     }
-
 }

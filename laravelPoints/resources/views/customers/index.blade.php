@@ -39,7 +39,7 @@
         <center><div class="panel-heading">รายชื่อ Customers ที่มีอยู่ในฐานข้อมูลแล้ว</div></center>
         <table class="table table-striped table-hover ">
             <thead>
-                <tr>
+                <tr class="success">
                     <th>รหัส</th>
                     <th>วันที่สมัครส</th>
                     <th>อีเมล์</th>
@@ -52,6 +52,7 @@
                     <th>ยอดเงิน</th>
                     <th>ผู้ใช้งานจาก Host</th>
                     <th>คะแนน</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

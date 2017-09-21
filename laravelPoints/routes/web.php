@@ -22,6 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('/customers', 'CustomerController');
+Route::resource('/settings', 'SettingsController');
+Route::resource('/rewards_stock', 'RewardController');
+
+
 Route::post('/find_customers', 'CustomerController@FindCustomers');
 Route::post('/cal_points', 'CustomerController@CalPoints');
 Route::post('/add_points', 'CustomerController@AddPoints');

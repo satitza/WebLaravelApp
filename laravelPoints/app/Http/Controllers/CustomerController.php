@@ -24,12 +24,16 @@ class CustomerController extends Controller {
      */
     //Query All From Table Customer User And Return to view
     public function index() {
-        $wc_host_item = WCHost::all();
-        $customers = CustomersUsers::all();
-        return view('customers.index', [
-            'wc_host_item' => $wc_host_item,
-            'customers' => $customers
-        ]);
+        try {
+            $wc_host_item = WCHost::all();
+            $customers = CustomersUsers::all();
+            return view('customers.index', [
+                'wc_host_item' => $wc_host_item,
+                'customers' => $customers
+            ]);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**

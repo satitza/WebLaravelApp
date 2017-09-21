@@ -89,8 +89,8 @@
                 <div class="links">
                     <a href="{{ url('customers') }}">Customers</a>
                     <a href="#">Reward History</a>
-                    <a href="#">Reward Stock</a>
-                    <a href="#">Settings</a>
+                    <a href="{{ url('rewards_stock') }}">Reward Stock</a>
+                    <a href="{{ url('settings') }}">Settings</a>
                 </div>
             </div>
         </div>
