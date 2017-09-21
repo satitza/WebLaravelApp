@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/customers', 'CustomerController');
 Route::resource('/settings', 'SettingsController');
 Route::resource('/rewards_stock', 'RewardController');
+Route::resource('/rewards_history', 'RewardHistoryController');
 
 
 Route::post('/rewards_stock/form', 'RewardController@ShowFormAddReward');
