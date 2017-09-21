@@ -29,6 +29,10 @@
                         ยอดเงินที่เพิ่มเข้ามา
                     </li>
                     <li class="list-group-item">
+                        <span class="badge">{{ $new_orders_count }}</span>
+                        รวมจำนวนครั้งที่สั่งของ
+                    </li>
+                    <li class="list-group-item">
                         <span class="badge">{{ $new_points }}</span>
                         คะแนนใหม่ที่ใด้รับ
                     </li>
@@ -37,8 +41,9 @@
                     {{ Form::submit('Update Points', ['class' => 'btn btn-primary']) }}
                 </center>
                 {{ Form::hidden('customers_id', $customers_id) }}
-                {{ Form::hidden('old_total', $old_total) }}
+                {{ Form::hidden('new_orders_count', $new_orders_count) }}
                 {{ Form::hidden('new_total', $new_total) }}
+                {{ Form::hidden('settlement', $settlement) }}
                 {{ Form::hidden('new_points', $new_points) }}
                 {{ csrf_field() }}
                 {!! Form::close() !!}

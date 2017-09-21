@@ -97,14 +97,15 @@ class CustomerController extends Controller {
             );
             $get_customers = $woocommerce->get('customers/' . $request->customers_id);
             $old_total = $request->total_spent;
-            $new_total = $get_customers["total_spent"];
+            $new_total = intval($get_customers["total_spent"]);
             $settlement = $new_total - $old_total;
-            $new_points = $settlement / 50;
+            $new_points = intval($settlement / 50);
 
             return view('customers.cal_points', [
                 'customers_id' => $request->customers_id,
                 'old_total' => $old_total,
                 'old_points' => $request->points,
+                'new_orders_count' => $get_customers['orders_count'],
                 'new_total' => $new_total,
                 'settlement' => $settlement,
                 'new_points' => $new_points
@@ -126,18 +127,24 @@ class CustomerController extends Controller {
     }
 
     public function AddPoints(Request $request) {
-        if ($request->ole_total == $request->new_total) {
+        if (intval($request->settlement) < 50) {
             return redirect()->action('CustomerController@index');
         }
-        echo "ID " . $request->customers_id . "<br>";
-        echo "คะแนนใหม่ " . $request->new_points . "<br>";
-
-        $customers = CustomersUsers::where('customers_id', '=', $request->customers_id)->firstOrFail();
-        echo "คะแนนเดิม " . $old_points = $customers->points . "<br>";
-        echo "คะแนนเก่า + คะแนนใหม่ " . $sum_points = $request->new_points + $customers->points;
-        /*DB::table('customers_users')
-                ->where('customers_id', $request->customers_id)
-                ->update(['points' => $sum_points]);*/
+        try {
+            $customers = CustomersUsers::where('customers_id', '=', $request->customers_id)->firstOrFail();
+            $sum_points = $request->new_points + $customers->points;
+            intval($sum_points);
+            DB::table('customers_users')
+                    ->where('customers_id', $request->customers_id)
+                    ->update([
+                        'orders_count' => $request->new_orders_count,
+                        'total_spent' => $request->new_total,
+                        'points' => $sum_points
+            ]);
+            return redirect()->action('CustomerController@index');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**
