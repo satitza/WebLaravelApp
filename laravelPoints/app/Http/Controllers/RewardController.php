@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use File;
 use Storage;
 use App\RewardsStock;
@@ -45,6 +46,21 @@ class RewardController extends Controller {
         return view('rewards.add_reward');
     }
 
+    public function ShowFormEditReward(Request $request) {
+        try {
+            $reward_stock = RewardsStock::find($request->reward_id);
+            return view('rewards.edit_reward', [
+                'reward_id' => $reward_stock->id,
+                'reward_name' => $reward_stock->reward_name,
+                'reward_detial' => $reward_stock->reward_detial,
+                'amount' => $reward_stock->amount,
+                'reward_points' => $reward_stock->reward_points
+            ]);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -77,11 +93,22 @@ class RewardController extends Controller {
     }
 
     public function EditReward(Request $request) {
-        return view('rewards.edit_reward');
+        try {
+            DB::table('rewards_stock')
+                    ->where('id', $request->reward_id)
+                    ->update([
+                        'reward_name' => $request->reward_name,
+                        'reward_detial' => $request->reward_detial,
+                        'amount' => $request->reward_amount,
+                        'reward_points' => $request->reward_points
+            ]);
+            return redirect()->action('RewardController@index');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function DeleteReward(Request $request) {
-        //echo $request->reward_id;
         try {
             $reward_stock = RewardsStock::find($request->reward_id);
             $reward_stock->delete();

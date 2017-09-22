@@ -29,7 +29,8 @@ Route::resource('/rewards_history', 'RewardHistoryController');
 
 Route::post('/rewards_stock/form', 'RewardController@ShowFormAddReward');
 Route::post('/rewards_stock/delete', 'RewardController@DeleteReward');
-Route::post('/rewards_stock/edit', 'RewardController@EditReward');
+Route::post('/rewards_stock/edit', 'RewardController@ShowFormEditReward');
+Route::post('/rewards_stock/update', 'RewardController@EditReward');
 Route::post('/find_customers', 'CustomerController@FindCustomers');
 Route::post('/cal_points', 'CustomerController@CalPoints');
 Route::post('/add_points', 'CustomerController@AddPoints');
