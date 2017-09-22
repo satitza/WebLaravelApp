@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use File;
+use Storage;
 use App\RewardsStock;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreRewardsRequest;
 use Illuminate\Support\Facades\Input;
 
 class RewardController extends Controller {
@@ -47,27 +50,27 @@ class RewardController extends Controller {
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     * */
     public function store(Request $request) {
         if (Input::hasFile('image')) {
-
-
-            echo "reward_name : " . $request->reward_name . "<br>";
-            echo "reward_detial : " . $request->reward_detial . "<br>";
-            echo "reward_amount : " . $request->reward_amount . "<br>";
-            echo "reward_points : " . $request->reward_points . "<br>";
-
-
-            $this->validate($request, [
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-
-            $image = $request->file('image');
-            $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-            echo "images name : " . $input['imagename'] . "<br>";
-            //$destinationPath = public_path('/reward_images');
-            //$image->move($destinationPath, $input['imagename']);
+            try {
+                $this->validate($request, [
+                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $destinationPath = public_path('/reward_images');
+                $reward_stock = New RewardsStock();
+                $reward_stock->reward_name = $request->reward_name;
+                $reward_stock->reward_detial = $request->reward_detial;
+                $reward_stock->path_images = '/reward_images/' . $filename;
+                $reward_stock->amount = $request->reward_amount;
+                $reward_stock->reward_points = $request->reward_points;
+                $reward_stock->save();
+                $request->file('image')->move($destinationPath, $filename);
+                return redirect()->action('RewardController@index');
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
         } else {
             echo "Images upload not found";
         }
@@ -75,6 +78,17 @@ class RewardController extends Controller {
 
     public function EditReward(Request $request) {
         return view('rewards.edit_reward');
+    }
+
+    public function DeleteReward(Request $request) {
+        //echo $request->reward_id;
+        try {
+            $reward_stock = RewardsStock::find($request->reward_id);
+            $reward_stock->delete();
+            return redirect()->action('RewardController@index');
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**

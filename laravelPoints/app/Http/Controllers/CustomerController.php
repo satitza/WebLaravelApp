@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use DB;
-use Database;
 use App\WCHost;
 use App\CustomersUsers;
-use App\CustomersPoints;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCustomersRequest;
 use Automattic\WooCommerce\Client;
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
@@ -46,7 +45,7 @@ class CustomerController extends Controller {
     }
 
     //Find Customer Where Host And ID And Chack Customers in databases
-    public function FindCustomers(Request $request) {
+    public function FindCustomers(StoreCustomersRequest $request) {
         $wc_host = $request->get('wc_item');
         $customers_id = $request->name;
         $wc_key = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();

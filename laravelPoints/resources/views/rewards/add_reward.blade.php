@@ -4,9 +4,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <center>{{ $error }}</center>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-heading"><center>เพิ่มของรางวัล</center></div>
-
                 <div class="panel-body">
                     {!! Form::open(['url' => 'rewards_stock', 'files' => true]) !!}
                     <table class="table table-striped table-hover ">
@@ -18,23 +26,23 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ Form::label('reward_name', 'ชื่อของรางวัล') }}</td>
+                                <td>{{ Form::label('lb_reward_name', 'ชื่อของรางวัล') }}</td>
                                 <td>{{ Form::text('reward_name', null, ['class' => 'form-control']) }}</td>
                             </tr>
                             <tr>
-                                <td>{{ Form::label('reward_detial', 'รายละเอียดของรางวัล') }}</td>
+                                <td>{{ Form::label('lb_detial', 'รายละเอียดของรางวัล') }}</td>
                                 <td>{{ Form::textarea('reward_detial', null, ['class' => 'form-control']) }}</td>
                             </tr>
                             <tr class="info">
-                                <td>{{ Form::label('images_name', 'อัพโหลดรูปภาพ') }}</td>
+                                <td>{{ Form::label('lb_images_name', 'อัพโหลดรูปภาพ') }}</td>
                                 <td>{{ Form::file('image', array('class' => 'image')) }}</td>
                             </tr>
                             <tr>
-                                <td>{{ Form::label('amount', 'จำนวนของรางวัล') }}</td>
+                                <td>{{ Form::label('lb_amount', 'จำนวนของรางวัล') }}</td>
                                 <td>{{ Form::text('reward_amount', null, ['class' => 'form-control']) }}</td>
                             </tr>
                             <tr>
-                                <td>{{ Form::label('reward_points', 'คะแนนที่ใช้แลก') }}</td>
+                                <td>{{ Form::label('lb_reward_points', 'คะแนนที่ใช้แลก') }}</td>
                                 <td>{{ Form::text('reward_points', null, ['class' => 'form-control']) }}</td>
                             </tr>
                         </tbody>
@@ -42,7 +50,7 @@
                     <center>
                         {{ Form::submit('บันทึกลงฐานข้อมูล', ['class' => 'btn btn-primary']) }}
                     </center>
-                    {{ Form::token() }}
+                    {{ csrf_field() }}
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -3,7 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2"> 
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <center>{{ $error }}</center>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="panel panel-primary">
                 <center><div class="panel-heading">ค้นหา Customers จาก ID</div></center>
                 <div class="panel-body">
@@ -26,7 +36,9 @@
                         {{ Form::text('name', null, ['class' => 'form-control']) }}                  
                     </div>
                     <br>
-                    {{ Form::submit('ค้นหา', ['class' => 'btn btn-primary']) }}
+                    <center>
+                        {{ Form::submit('ค้นหา', ['class' => 'btn btn-primary']) }}
+                    </center>
                     {{ csrf_field() }}
                     {!! Form::close() !!}                  
                 </div>
