@@ -25,6 +25,7 @@ Route::resource('/customers', 'CustomerController');
 Route::resource('/settings', 'SettingsController');
 Route::resource('/rewards_stock', 'RewardController');
 Route::resource('/rewards_history', 'RewardHistoryController');
+Route::resource('/promotion', 'PromotionController');
 
 
 Route::post('/rewards_stock/form', 'RewardController@ShowFormAddReward');
