@@ -51,23 +51,37 @@ class PromotionController extends Controller {
             echo "total points : " . $total_points . "<br>";
             $sum_points = intval($request->customers_points) - $total_points;
             echo "คะแนนคงเหลือ : " . $sum_points;
+            echo "วันที่ : " . date("d-m-y") . "<br>";
+            echo "IP Address : " . $request->ip() . "<br>";
+
+
             try {
                 $table = New RewardsHistory();
                 $table->customers_id = $request->customers_id;
                 $table->rewards_id = $request->reward_id;
                 $table->rewards_amount = intval($request->reward_amount);
-                //$table->customers_points = 
+                $table->total_points = intval($total_points);
+                $table->order_date = date("d-m-y");
+                $table->order_status = 1;
+                $table->ip_address = $request->ip();
+                $table->save();
 
-
-                /* update points customer with sum_points
-                  DB::table('customers_users')
-                  ->where('customers_id', $request->customers_id)
-                  ->update([
-                  'orders_count' => $request->new_orders_count,
-                  'total_spent' => $request->new_total,
-                  'points' => $sum_points
-                  ]);
-                  return redirect()->action('CustomerController@index'); */
+                //Check Order
+                $matchThese = ['customers_id' => $customers_id, 'from_host' => $from_host];
+                if (RewardsHistory::where($matchThese)->count() > 0) {
+                    /* update points customer with sum_points
+                      DB::table('customers_users')
+                      ->where('customers_id', $request->customers_id)
+                      ->update([
+                      'orders_count' => $request->new_orders_count,
+                      'total_spent' => $request->new_total,
+                      'points' => $sum_points
+                      ]);
+                      return redirect()->action('CustomerController@index'); */
+                } else {
+                    //return error page
+                    echo "เกิดข้อผิดพลาดขณะทำรายการ";
+                }
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
