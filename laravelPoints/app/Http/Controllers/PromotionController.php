@@ -22,16 +22,7 @@ class PromotionController extends Controller {
             $matchThese = ['customers_id' => $customers_id, 'from_host' => $from_host];
             $customers = CustomersUsers::where($matchThese)->get();
             $rewards = RewardsStock::all();
-            /*foreach ($customers as $customer) {
-                
-            }*/
-            return view('promotions.index', [
-                //'customers_id' => $customer["id"],
-                //'first_name' => $customer["first_name"],
-                //'last_name' => $customer["last_name"],
-                //'points' => $customer["points"],
-                'rewards' => $rewards
-            ]);
+            return view('promotions.index')->with('customers', $customers)->with('rewards', $rewards);
         } catch (Exception $e) {
             echo $e->getMessage();
         }

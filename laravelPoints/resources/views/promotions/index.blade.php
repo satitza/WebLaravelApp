@@ -13,9 +13,9 @@
     <body>
         <div class="jumbotron">
             <h1 class="display-3">สวัสดีคุณ : Anonymous Hacker</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p class="lead">รายละเอียดผู้ใช้งาน</p>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p>อธิบายแลกของรางวัล</p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="#" role="button">กลับไปยังเว็บไวต์หลัก</a>
             </p>
@@ -30,23 +30,25 @@
                         <div class="card-body">
                             <h4 class="card-title">{{ $reward->reward_name }}</h4>
                             <p class="card-text">{{ $reward->reward_detial }}</p>
+                            <p class="card-text">จำนวนของที่มีอยู่ขณะนี้คือ {{ $reward->amount }} ชิ้น</p>
+                            <p class="card-text">จำนวนคะแนนที่ใช้แลกของชิ้นนี้คือ  {{ $reward->points }} คะแนน</p>
                         </div>
                     </div>
                 </td>
+                {!! Form::open(['url' => '#']) !!}
                 <td>
-                    <div class="col-lg-10">
-                        <select class="form-control" id="select">
-                            <option>{{ $reward->amount }}</option>
-                        </select>
-                    </div>
-                </td>
-                <td>
+                    {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'ระบุจำนวนที่ต้องการ']) }}
+                    <br>
                     {{ Form::submit('แลกของรางวัล', ['class' => 'btn btn-primary']) }}
                 </td>
+                {{ csrf_field() }}
+                {!! Form::close() !!}
             </tr>
             @endforeach
         </table></center>
-
+    <footer>
+        The Founder Corp
+    </footer>
 </body>
 </html>
 
