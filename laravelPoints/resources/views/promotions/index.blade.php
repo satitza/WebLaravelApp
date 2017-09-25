@@ -12,35 +12,47 @@
     </head>
     <body>
         <div class="jumbotron">
-            <h1 class="display-3">สวัสดีคุณ : Anonymous Hacker</h1>
+            <h4 class="display-4">The Founder Corp Reward Potins</h4>
             <p class="lead">รายละเอียดผู้ใช้งาน</p>
+            <ul>
+                <li>รหัสผู้ใช้งาน : {{ $customers_id }}</li>
+                <li>ชื่อผู้ใช้งาน : {{ $first_name }}  {{ $last_name }} </li>
+                <li>จำนวนคะแนน : {{ $points }}</li>
+            </ul>
             <hr class="my-4">
-            <p>อธิบายแลกของรางวัล</p>
+            <p></p>
             <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#" role="button">กลับไปยังเว็บไวต์หลัก</a>
+                <a class="btn btn-primary btn-lg" href="http://www.perflexgroup.com/my-account" role="button">กลับไปยังเว็บไวต์หลัก</a>
             </p>
         </div>
 
     <center><table border="0">
             @foreach ($rewards as $reward)
+            @php
+               $reward_id = $reward->id;
+            @endphp
             <tr>
-                <td>
-                    <div class="card" style="width: 20rem;">
+                <td width="600">
+                    <div class="card" style="width: 25rem;">
                         <img class="card-img-top" src="{{ asset($reward->path_images) }}" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">{{ $reward->reward_name }}</h4>
                             <p class="card-text">{{ $reward->reward_detial }}</p>
                             <p class="card-text">จำนวนของที่มีอยู่ขณะนี้คือ {{ $reward->amount }} ชิ้น</p>
-                            <p class="card-text">จำนวนคะแนนที่ใช้แลกของชิ้นนี้คือ  {{ $reward->points }} คะแนน</p>
+                            <p class="card-text">จำนวนคะแนนที่ใช้แลกของชิ้นนี้คือ  {{ $reward->reward_points }} คะแนน</p>
                         </div>
                     </div>
                 </td>
-                {!! Form::open(['url' => '#']) !!}
-                <td>
-                    {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'ระบุจำนวนที่ต้องการ']) }}
+                {!! Form::open(['url' => 'deal_rewards']) !!}
+                <td width="300">
+                    {{ Form::text('reward_amount', null, ['class' => 'form-control', 'placeholder' => 'ระบุจำนวนที่ต้องการ']) }}
                     <br>
                     {{ Form::submit('แลกของรางวัล', ['class' => 'btn btn-primary']) }}
                 </td>
+                {{ Form::hidden('customers_id', $customers_id) }}
+                {{ Form::hidden('customers_points', $points) }}
+                {{ Form::hidden('reward_id', $reward_id) }}
+                {{ Form::hidden('reward_points', $reward->reward_points) }}
                 {{ csrf_field() }}
                 {!! Form::close() !!}
             </tr>

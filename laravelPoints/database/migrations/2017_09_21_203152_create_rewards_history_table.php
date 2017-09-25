@@ -19,7 +19,7 @@ class CreateRewardsHistoryTable extends Migration
             $table->integer('rewards_id')->unsigned();
             $table->foreign('rewards_id')->references('id')->on('rewards_stock');
             $table->integer('rewards_amount')->unsigned();
-            $table->integer('customers_points')->unsigned();
+            $table->integer('total_points')->unsigned();
             $table->date('order_date')->nullable();
             $table->integer('order_status')->unsigned();
             $table->string('ip_address')->nullable();
