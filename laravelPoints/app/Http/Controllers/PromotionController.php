@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\WCHost;
 use App\CustomersUsers;
 use App\RewardsHistory;
@@ -43,18 +44,8 @@ class PromotionController extends Controller {
             //return error page
             echo "คะแนนของคุณไม่เพียงพอสำหรับแลกของรางวัล";
         } else {
-            echo "customers id : " . $request->customers_id . "<br>";
-            echo "customers points : " . intval($request->customers_points) . "<br>";
-            echo "reward id : " . $request->reward_id . "<br>";
-            echo "reward points : " . intval($request->reward_points) . "<br>";
-            echo "reward amount : " . intval($request->reward_amount) . "<br>";
-            echo "total points : " . $total_points . "<br>";
             $sum_points = intval($request->customers_points) - $total_points;
-            echo "คะแนนคงเหลือ : " . $sum_points;
-            echo "วันที่ : " . date("d-m-y") . "<br>";
-            echo "IP Address : " . $request->ip() . "<br>";
-
-
+            DB::beginTransaction();
             try {
                 $table = New RewardsHistory();
                 $table->customers_id = $request->customers_id;
@@ -66,25 +57,18 @@ class PromotionController extends Controller {
                 $table->ip_address = $request->ip();
                 $table->save();
 
-                //Check Order
-                $matchThese = ['customers_id' => $customers_id, 'from_host' => $from_host];
-                if (RewardsHistory::where($matchThese)->count() > 0) {
-                    /* update points customer with sum_points
-                      DB::table('customers_users')
-                      ->where('customers_id', $request->customers_id)
-                      ->update([
-                      'orders_count' => $request->new_orders_count,
-                      'total_spent' => $request->new_total,
-                      'points' => $sum_points
-                      ]);
-                      return redirect()->action('CustomerController@index'); */
-                } else {
-                    //return error page
-                    echo "เกิดข้อผิดพลาดขณะทำรายการ";
-                }
+                //update points customer with sum_points
+                DB::table('customers_users')
+                        ->where('customers_id', $request->customers_id)
+                        ->update([
+                            'points' => $sum_points
+                ]);
+                return redirect()->action('PromotionController@index');
             } catch (Exception $e) {
+                DB::rollback();
                 echo $e->getMessage();
             }
+            DB::commit();
         }
     }
 
