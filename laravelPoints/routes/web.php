@@ -25,7 +25,6 @@ Route::resource('/customers', 'CustomerController');
 Route::resource('/settings', 'SettingsController');
 Route::resource('/rewards_stock', 'RewardController');
 Route::resource('/rewards_history', 'RewardHistoryController');
-Route::resource('/promotion', 'PromotionController');
 
 
 Route::post('/rewards_stock/form', 'RewardController@ShowFormAddReward');
@@ -35,3 +34,6 @@ Route::post('/rewards_stock/update', 'RewardController@EditReward');
 Route::post('/find_customers', 'CustomerController@FindCustomers');
 Route::post('/cal_points', 'CustomerController@CalPoints');
 Route::post('/add_points', 'CustomerController@AddPoints');
+
+
+Route::get('/promotions/{id}/{key}', 'PromotionController@Index');
