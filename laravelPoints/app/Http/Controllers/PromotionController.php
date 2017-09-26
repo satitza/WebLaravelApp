@@ -8,6 +8,7 @@ use App\CustomersUsers;
 use App\RewardsHistory;
 use Illuminate\Http\Request;
 use App\RewardsStock;
+use App\Http\Controllers\PromotionController;
 use Automattic\WooCommerce\Client;
 
 class PromotionController extends Controller {
@@ -41,8 +42,7 @@ class PromotionController extends Controller {
     public function DealRewards(Request $request) {
         $total_points = intval($request->reward_points) * intval($request->reward_amount);
         if ($total_points > $request->customers_points) {
-            //return error page
-            echo "คะแนนของคุณไม่เพียงพอสำหรับแลกของรางวัล";
+            return view('promotions.no_enough');
         } else {
             $sum_points = intval($request->customers_points) - $total_points;
             DB::beginTransaction();
@@ -52,7 +52,7 @@ class PromotionController extends Controller {
                 $table->rewards_id = $request->reward_id;
                 $table->rewards_amount = intval($request->reward_amount);
                 $table->total_points = intval($total_points);
-                $table->order_date = date("d-m-y");
+                $table->order_date = date("Y-m-d");
                 $table->order_status = 1;
                 $table->ip_address = $request->ip();
                 $table->save();
@@ -63,12 +63,23 @@ class PromotionController extends Controller {
                         ->update([
                             'points' => $sum_points
                 ]);
-                return redirect()->action('PromotionController@index');
+
+                $rewards_stock = RewardsStock::where('id', '=', $request->reward_id)->firstOrFail();
+                $sum_amount = intval($rewards_stock->amount) - $request->reward_amount;
+
+                //Update amount in table reward stock
+                DB::table('rewards_stock')
+                        ->where('id', $request->reward_id)
+                        ->update([
+                            'amount' => $sum_amount
+                ]);
+
+                DB::commit();
+                return view('promotions.success');
             } catch (Exception $e) {
                 DB::rollback();
                 echo $e->getMessage();
             }
-            DB::commit();
         }
     }
 
