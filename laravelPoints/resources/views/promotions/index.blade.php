@@ -25,11 +25,20 @@
                 <a class="btn btn-primary btn-lg" href="http://www.perflexgroup.com/my-account" role="button">กลับไปยังเว็บไวต์หลัก</a>
             </p>
         </div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <center>{{ $error }}</center>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
     <center><table border="0">
             @foreach ($rewards as $reward)
             @php
-               $reward_id = $reward->id;
+            $reward_id = $reward->id;
             @endphp
             <tr>
                 <td width="600">
@@ -45,7 +54,7 @@
                 </td>
                 {!! Form::open(['url' => 'deal_rewards']) !!}
                 <td width="300">
-                    {{ Form::text('reward_amount', null, ['class' => 'form-control', 'placeholder' => 'ระบุจำนวนที่ต้องการ']) }}
+                    {{ Form::text('new_amount', null, ['class' => 'form-control', 'placeholder' => 'ระบุจำนวนที่ต้องการ']) }}
                     <br>
                     {{ Form::submit('แลกของรางวัล', ['class' => 'btn btn-primary']) }}
                 </td>
@@ -53,6 +62,7 @@
                 {{ Form::hidden('customers_points', $points) }}
                 {{ Form::hidden('reward_id', $reward_id) }}
                 {{ Form::hidden('reward_points', $reward->reward_points) }}
+                {{ Form::hidden('old_amount', $reward->amount) }}
                 {{ csrf_field() }}
                 {!! Form::close() !!}
             </tr>

@@ -66,6 +66,7 @@ class CustomerController extends Controller {
             } else {
 
                 $points = $get_customers["total_spent"] / 50;
+                $user_key_encrypted = md5($wc_key->wc_host.$customers_id);
 
                 $table = New CustomersUsers();
                 $table->customers_id = $get_customers["id"];
@@ -81,6 +82,7 @@ class CustomerController extends Controller {
                 $table->total_spent = $get_customers["total_spent"];
                 $table->from_host = $wc_host;
                 $table->points = $points;
+                $table->user_key = $user_key_encrypted;
                 $table->save();
                 return redirect()->action('CustomerController@index');
             }

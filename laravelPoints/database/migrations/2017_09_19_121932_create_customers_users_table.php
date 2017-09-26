@@ -28,6 +28,7 @@ class CreateCustomersUsersTable extends Migration
             $table->integer('total_spent')->unsigned();
             $table->string('from_host')->nullable();
             $table->integer('points')->unsigned();
+            $table->string('user_key')->nullable();
             $table->timestamps();
         });
     }

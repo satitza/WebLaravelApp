@@ -38,4 +38,4 @@ Route::post('/cal_points', 'CustomerController@CalPoints');
 Route::post('/add_points', 'CustomerController@AddPoints');
 
 
-Route::get('/promotions/{id}/{key}', 'PromotionController@index');
+Route::get('/promotions/{key}', 'PromotionController@index');
