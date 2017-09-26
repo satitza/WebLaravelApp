@@ -30,10 +30,10 @@
                     </div>
                     <br>
                     <div>
-                        {{ Form::label('customers_id', 'Customers ID') }}
+                        {{ Form::label('lb_customers_id', 'Customers ID') }}
                     </div>
                     <div>
-                        {{ Form::text('name', null, ['class' => 'form-control']) }}                  
+                        {{ Form::text('customers_id', null, ['class' => 'form-control']) }}                  
                     </div>
                     <br>
                     <center>

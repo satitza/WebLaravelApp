@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomersRequest extends FormRequest {
+class PostCustomerRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,13 @@ class StoreCustomersRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'name' => 'required|integer',
+              'customers_id' => 'required'
         ];
     }
 
     public function messages() {
         return [
-            'name.required' => 'กรุณากรอก Customers ID ที่ต้องการค้นหา',
-            'name.integer' => 'กรุณากรอก Customers ID เป็นตัวเลข',
+              'customers_id.required' => 'กรุณากรอก Customers ID'  
         ];
     }
 

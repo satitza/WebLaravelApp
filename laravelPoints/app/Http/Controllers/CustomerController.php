@@ -6,7 +6,7 @@ use DB;
 use App\WCHost;
 use App\CustomersUsers;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreCustomersRequest;
+use App\Http\Requests\PostCustomerRequest;
 use Automattic\WooCommerce\Client;
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
@@ -45,9 +45,9 @@ class CustomerController extends Controller {
     }
 
     //Find Customer Where Host And ID And Chack Customers in databases
-    public function FindCustomers(StoreCustomersRequest $request) {
+    public function FindCustomers(PostCustomerRequest $request) {
         $wc_host = $request->get('wc_item');
-        $customers_id = $request->name;
+        $customers_id = $request->customers_id;
         $wc_key = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();
         try {
             $woocommerce = new Client(

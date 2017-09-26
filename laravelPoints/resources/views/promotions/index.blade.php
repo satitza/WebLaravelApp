@@ -25,7 +25,7 @@
                 <a class="btn btn-primary btn-lg" href="http://www.perflexgroup.com/my-account" role="button">กลับไปยังเว็บไวต์หลัก</a>
             </p>
         </div>
-        @if ($errors->any())
+        @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -35,14 +35,14 @@
         </div>
         @endif
 
-    <center><table border="0">
+    <center><table width="800">
             @foreach ($rewards as $reward)
             @php
             $reward_id = $reward->id;
             @endphp
             <tr>
-                <td width="600">
-                    <div class="card" style="width: 25rem;">
+                <td width="">
+                    <div class="card" style="width: 20rem;">
                         <img class="card-img-top" src="{{ asset($reward->path_images) }}" alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">{{ $reward->reward_name }}</h4>
@@ -53,7 +53,7 @@
                     </div>
                 </td>
                 {!! Form::open(['url' => 'deal_rewards']) !!}
-                <td width="300">
+                <td width="">
                     {{ Form::text('new_amount', null, ['class' => 'form-control', 'placeholder' => 'ระบุจำนวนที่ต้องการ']) }}
                     <br>
                     {{ Form::submit('แลกของรางวัล', ['class' => 'btn btn-primary']) }}
@@ -62,11 +62,11 @@
                 {{ Form::hidden('customers_points', $points) }}
                 {{ Form::hidden('reward_id', $reward_id) }}
                 {{ Form::hidden('reward_points', $reward->reward_points) }}
-                {{ Form::hidden('old_amount', $reward->amount) }}
                 {{ csrf_field() }}
                 {!! Form::close() !!}
             </tr>
             @endforeach
+
         </table></center>
     <footer>
         The Founder Corp

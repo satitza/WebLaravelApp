@@ -23,6 +23,7 @@ class PromotionController extends Controller {
         if (CustomersUsers::where('user_key', $user_key)->count() > 0) {
             try {
                 $customers = CustomersUsers::where('user_key', $user_key)->get();
+                //$rewards = RewardsStock::paginate(5);
                 $rewards = RewardsStock::all();
                 foreach ($customers as $customer) {
                     
@@ -44,11 +45,12 @@ class PromotionController extends Controller {
 
     public function DealRewards(Request $request) {
         $total_points = intval($request->reward_points) * intval($request->new_amount);
+        $rewards_stock = RewardsStock::where('id', '=', $request->reward_id)->firstOrFail();
         if ($total_points > $request->customers_points) {
             return view('promotions.no_enough');
-        } else if ($request->new_amount > $request->old_amount) {
+        } else if ($request->new_amount > $rewards_stock->amount) {
             echo "ของรางวัลมีไม่เพียงพอสำหรับใช้คะแนนแลก";
-        } else {
+        } else {      
             $sum_points = intval($request->customers_points) - $total_points;
             DB::beginTransaction();
             try {
