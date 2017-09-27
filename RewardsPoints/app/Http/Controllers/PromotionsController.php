@@ -7,6 +7,7 @@ use App\CustomersUsers;
 use App\RewardsHistory;
 use App\RewardsStock;
 use Illuminate\Http\Request;
+use App\Http\Requests\PromotionsRequest;
 
 class PromotionsController extends Controller {
 
@@ -39,7 +40,7 @@ class PromotionsController extends Controller {
         }
     }
 
-    public function DealRewards(Request $request) {
+    public function DealRewards(PromotionsRequest $request) {
         $total_points = intval($request->rewards_points) * intval($request->new_amount);
         //echo "reward points : ".$request->ewwards_points."<br>";
         //echo $total_points;

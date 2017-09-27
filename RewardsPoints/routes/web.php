@@ -28,6 +28,7 @@ Route::resource('/rewardshistory', 'RewardsHistoryController');
 
 
 Route::get('/addrewards', 'RewardsStockController@ShowFormAddReward');
+Route::get('/editrewards', 'RewardsStockController@ShowFormEditReward');
 Route::post('/rewardsstock/add', 'RewardsStockController@AddRewards');
 Route::post('/rewardsstock/delete', 'RewardsStockController@DeleteReward');
 Route::post('/rewardsstock/edit', 'RewardsStockController@ShowFormEditReward');
