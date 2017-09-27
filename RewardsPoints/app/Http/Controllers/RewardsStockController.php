@@ -7,6 +7,7 @@ use File;
 use App\RewardsStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Http\Requests\RewardsStockRequest;
 
 class RewardsStockController extends Controller {
 
@@ -44,18 +45,12 @@ class RewardsStockController extends Controller {
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request) {
+    public function AddRewards(RewardsStockRequest $request) {
         if (Input::hasFile('image')) {
             try {
-                $this->validate($request, [
-                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                ]);
+                /* $this->validate($request, [
+                  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                  ]); */
                 $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $destinationPath = public_path('/reward_images');
                 $reward_stock = New RewardsStock();
@@ -73,6 +68,18 @@ class RewardsStockController extends Controller {
         } else {
             echo "Images upload not found";
         }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * 
+     * 
+     */
+    public function store(RewardsStockRequest $request) {
+        
     }
 
     public function ShowFormEditReward(Request $request) {

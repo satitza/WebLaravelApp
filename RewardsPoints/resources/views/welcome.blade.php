@@ -87,10 +87,10 @@
             </div>
 
             <div class="links">
-                <a href="{{ url('customers') }}">Customers</a>
-                <a href="{{ url('rewardshistory') }}">Reward History</a>
-                <a href="{{ url('rewardsstock') }}">Reward Stock</a>
-                <a href="{{ url('settings') }}">Settings</a>
+                <!--a href="{{ url('customers') }}">Customers</a--->
+                <!--a href="{{ url('rewardshistory') }}">Reward History</a--->
+                <!--a href="{{ url('rewardsstock') }}">Reward Stock</a--->
+                <!--a href="{{ url('settings') }}">Settings</a-->
             </div>
         </div>
     </div>

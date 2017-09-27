@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CustomersUsersRequest extends FormRequest {
+class RewardsStockRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,14 @@ class CustomersUsersRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'customers_id' => 'required|integer',
+            'reward_name' => 'required'
         ];
     }
 
     public function messages() {
         return [
-            'customers_id.required' => 'กรุณากรอก Customers ID',
-            'customers_id.integer' => 'กรุณากรอก Customers ID เป็นตัวเลข',
+            'reward_name.required' => 'กรุณากรอกชื่อของรางวัล',
         ];
     }
+
 }

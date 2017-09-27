@@ -50,13 +50,6 @@
                 </table>          
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;{!! $rewards->render() !!}
-                <center>
-
-                    {!! Form::open(['url' => 'rewardsstock/form']) !!}
-                    {{ Form::submit('Add Reward', ['class' => 'btn btn-primary']) }}                              
-                    {{ csrf_field() }}
-                    {!! Form::close() !!}
-                </center>
                 <div class="panel-body">
                 </div>
             </div>

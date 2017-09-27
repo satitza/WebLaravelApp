@@ -16,7 +16,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><center>เพิ่มของรางวัล</center></div>
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'rewardsstock', 'files' => true]) !!}
+                    {!! Form::open(['url' => 'rewardsstock/add', 'files' => true]) !!}
                     <table class="table table-striped table-hover ">
                         <thead>
                             <tr class="">
