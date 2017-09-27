@@ -37,5 +37,5 @@ Route::post('/calpoints', 'CustomersUsersController@CalPoints');
 Route::post('/addpoints', 'CustomersUsersController@AddPoints');
 
 
-Route::get('/promotions/{key}', 'PromotionController@index');
-Route::post('/dealrewards', 'PromotionController@DealRewards');
+Route::get('/promotions/{key}', 'PromotionsController@index');
+Route::post('/dealrewards', 'PromotionsController@DealRewards');

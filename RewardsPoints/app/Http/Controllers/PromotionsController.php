@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\CustomersUsers;
+use App\RewardsHistory;
+use App\RewardsStock;
 use Illuminate\Http\Request;
+
+
 
 class PromotionsController extends Controller
 {
@@ -11,9 +17,29 @@ class PromotionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_key)
     {
-        //
+        if (CustomersUsers::where('user_key', $user_key)->count() > 0) {
+            try {
+                $customers = CustomersUsers::where('user_key', $user_key)->get();
+                //$rewards = RewardsStock::paginate(5);
+                $rewards = RewardsStock::all();
+                foreach ($customers as $customer) {
+                    
+                }
+                return view('promotions.index', [
+                            'customers_id' => $customer["customers_id"],
+                            'first_name' => $customer["first_name"],
+                            'last_name' => $customer["last_name"],
+                            'points' => $customer["points"]
+                        ])->with('rewards', $rewards);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        } else {
+            //return error page
+            echo "ไม่พบผู้ใช้งาน";
+        }
     }
 
     /**
