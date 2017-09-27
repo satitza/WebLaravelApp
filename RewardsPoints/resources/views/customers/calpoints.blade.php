@@ -8,7 +8,7 @@
                 <div class="panel-heading">สรุปคะแนนสมาชิก</div>
                 {!! Form::open(['url' => 'addpoints']) !!}
                 <ul class="list-group">
-                     <li class="list-group-item">
+                    <li class="list-group-item">
                         <span class="badge">{{ $customers_id }}</span>
                         Customers ID
                     </li>

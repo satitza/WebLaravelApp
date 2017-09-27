@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-primary">
-                <div class="panel-heading"><center>จัดการของรางวัล</center></div>
+                <div class="panel-heading"><center></center></div>
                 <table class="table table-striped table-hover ">
                     <thead>
                         <tr class="success">

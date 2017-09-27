@@ -10,18 +10,18 @@ use Automattic\WooCommerce\Client;
 use App\Http\Requests\CustomersUsersRequest;
 use Automattic\WooCommerce\HttpClient\HttpClientException;
 
-class CustomersUsersController extends Controller
-{
+class CustomersUsersController extends Controller {
+
     public function __construct() {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         try {
             $wc_host_item = WCHost::all();
             $customers = CustomersUsers::all();
@@ -34,8 +34,8 @@ class CustomersUsersController extends Controller
         }
     }
 
-     //Find Customer Where Host And ID And Chack Customers in databases
-     public function FindCustomers(CustomersUsersRequest $request) {
+    //Find Customer Where Host And ID And Chack Customers in databases
+    public function FindCustomers(CustomersUsersRequest $request) {
         $wc_host = $request->get('wc_item');
         $customers_id = $request->customers_id;
         $wc_key = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();
@@ -56,7 +56,7 @@ class CustomersUsersController extends Controller
             } else {
 
                 $points = $get_customers["total_spent"] / 50;
-                $user_key_encrypted = md5($wc_key->wc_host.$customers_id);
+                $user_key_encrypted = md5($wc_key->wc_host . $customers_id);
 
                 $table = New CustomersUsers();
                 $table->customers_id = $get_customers["id"];
@@ -136,8 +136,7 @@ class CustomersUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -147,8 +146,7 @@ class CustomersUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -158,8 +156,7 @@ class CustomersUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -169,8 +166,7 @@ class CustomersUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -181,8 +177,7 @@ class CustomersUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -192,8 +187,8 @@ class CustomersUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }
