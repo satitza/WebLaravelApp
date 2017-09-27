@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/test', 'TestValidationController');
-Route::post('/test/form', 'TestValidationController@testform');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

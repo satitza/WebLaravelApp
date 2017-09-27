@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TestValidationRequest;
 
-class TestValidationController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +13,9 @@ class TestValidationController extends Controller
      */
     public function index()
     {
-        return view('test');
+        //
     }
 
-    public function testform(TestValidationRequest $request){
-        echo $request->customers_id;
-    }
     /**
      * Show the form for creating a new resource.
      *
