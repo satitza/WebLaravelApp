@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\WCHost;
 use App\CustomersUsers;
 use Illuminate\Http\Request;
 use Automattic\WooCommerce\Client;
 use App\Http\Requests\CustomersUsersRequest;
+use Automattic\WooCommerce\HttpClient\HttpClientException;
 
 class CustomersUsersController extends Controller
 {
