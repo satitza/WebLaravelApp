@@ -26,9 +26,13 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td>{{ Form::label('lb_reward_code', 'รหัส') }}</td>
+                                <td>{{ Form::text('reward_code', null, ['class' => 'form-control', 'placeholder' => 'รหัสของรางวัล']) }}</td>
+                            </tr>
+                            <tr>
                                 <td>{{ Form::label('lb_reward_name', 'ชื่อของรางวัล') }}</td>
                                 <td>{{ Form::text('reward_name', null, ['class' => 'form-control', 'placeholder' => 'ชื่อของรางวัล']) }}</td>
-                            </tr>
+                            </tr>                           
                             <tr>
                                 <td>{{ Form::label('lb_detial', 'รายละเอียด') }}</td>
                                 <td>{{ Form::textarea('reward_detial', null, ['class' => 'form-control', 'placeholder' => 'รายละเอียดของรางวัล']) }}</td>

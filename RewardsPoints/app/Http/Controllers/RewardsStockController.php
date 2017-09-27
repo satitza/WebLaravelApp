@@ -51,6 +51,7 @@ class RewardsStockController extends Controller {
                 $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $destinationPath = public_path('/reward_images');
                 $reward_stock = New RewardsStock();
+                $reward_stock->reward_code = $request->reward_code;
                 $reward_stock->reward_name = $request->reward_name;
                 $reward_stock->reward_detial = $request->reward_detial;
                 $reward_stock->path_images = '/reward_images/' . $filename;
@@ -75,8 +76,8 @@ class RewardsStockController extends Controller {
      * 
      * 
      */
-    public function store(RewardsStockRequest $request) {
-        
+    public function store(Request $request) {
+
     }
 
     public function ShowFormEditReward(Request $request) {

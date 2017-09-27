@@ -21,7 +21,7 @@ class PromotionsController extends Controller {
             try {
                 $customers = CustomersUsers::where('user_key', $user_key)->get();
                 //$rewards = RewardsStock::paginate(5);
-                $rewards = RewardsStock::paginate(5);
+                $rewards = RewardsStock::paginate(3);
                 foreach ($customers as $customer) {
                     
                 }
@@ -42,8 +42,6 @@ class PromotionsController extends Controller {
 
     public function DealRewards(PromotionsRequest $request) {
         $total_points = intval($request->rewards_points) * intval($request->new_amount);
-        //echo "reward points : ".$request->ewwards_points."<br>";
-        //echo $total_points;
         $rewards_stock = RewardsStock::where('id', '=', $request->rewards_id)->firstOrFail();
         if ($total_points > $request->customers_points) {
             //return view('promotions.no_enough');

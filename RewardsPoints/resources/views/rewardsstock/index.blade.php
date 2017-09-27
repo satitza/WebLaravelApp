@@ -9,7 +9,7 @@
                 <table class="table table-striped table-hover ">
                     <thead>
                         <tr class="success">
-                            <th>ID</th>
+                            <th>CODE</th>
                             <th>รูปภาพ</th>
                             <th>ชื่อของรางวัล</th>
                             <th>รายละเอียด</th>
@@ -22,7 +22,7 @@
                     <tbody>
                         @foreach ($rewards as $reward)
                         <tr>   
-                            <td>{{ $reward->id }}</td>
+                            <td>{{ $reward->reward_code }}</td>
                             <td><img class="d-block w-50" src="{{ asset($reward->path_images) }}" alt="First slide" height="150"></td>                     
                             <td>{{ $reward->reward_name }}</td>
                             <td>{{ $reward->reward_detial }}</td>
