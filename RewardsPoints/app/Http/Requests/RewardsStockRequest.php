@@ -22,13 +22,25 @@ class RewardsStockRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'reward_name' => 'required'
+            'reward_name' => 'required',
+            'reward_detial' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'reward_amount' => 'required|integer',
+            'reward_points' => 'required|integer',
         ];
     }
 
     public function messages() {
         return [
             'reward_name.required' => 'กรุณากรอกชื่อของรางวัล',
+            'reward_detial.required' => 'กรุณากรอกรายละเอียดของรางวัล',
+            'image.required' => 'กรุณาอัพโหลดรูปภาพของรางวัล',
+            'image.mimes' => 'กรุณาเลือกไฟล์รูปภาพเป็น jpeg, png, jpg, gif ขนาดไม่เกิน 2 MB',
+            'image.max' => 'ไฟล์รูปภาพใหญ่เกินขนาดที่กำหนด',
+            'reward_amount.required' => 'กรุณากรอกจำนวนของรางวัล',
+            'reward_amount.integer' => 'กรุณากรอกจำนวนของรางวัลเป็นตัวเลข',
+            'reward_points.required' => 'กรุณากรอกคะแนนสำหรับแลกของรางวัล',
+            'reward_points.integer' => 'กรุณากรอกคะแนนสำหรับแลกของรางวัลเป็นตัวเลข',
         ];
     }
 

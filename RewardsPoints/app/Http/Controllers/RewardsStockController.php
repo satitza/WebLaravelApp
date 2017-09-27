@@ -48,9 +48,6 @@ class RewardsStockController extends Controller {
     public function AddRewards(RewardsStockRequest $request) {
         if (Input::hasFile('image')) {
             try {
-                /* $this->validate($request, [
-                  'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                  ]); */
                 $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $destinationPath = public_path('/reward_images');
                 $reward_stock = New RewardsStock();
