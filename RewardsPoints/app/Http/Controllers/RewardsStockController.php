@@ -22,7 +22,7 @@ class RewardsStockController extends Controller
     {
         try {
             
-                        $rewards = RewardsStock::all();
+                        $rewards = RewardsStock::paginate(5);
                         return view('rewardsstock.index', [
                             'rewards' => $rewards
                         ]);
