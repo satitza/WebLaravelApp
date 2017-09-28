@@ -99,6 +99,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    {{ csrf_field() }}
                     {!! Form::close() !!} 
                     <h2>เงื่อนใขในการแลกของรางวัล</h2>
                     <p><small>This line of text is meant to be treated as fine print.</small></p>

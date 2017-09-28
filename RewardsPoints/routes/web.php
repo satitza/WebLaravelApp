@@ -34,6 +34,11 @@ Route::post('/rewardsstock/delete', 'RewardsStockController@DeleteReward');
 Route::post('/rewardsstock/edit', 'RewardsStockController@ShowFormEditReward');
 Route::post('/rewardsstock/update', 'RewardsStockController@EditReward');
 
+Route::post('/rewardshistory/detial', 'RewardsHistoryController@OrderDetial');
+
+
+
+
 Route::post('/findcustomers', 'CustomersUsersController@FindCustomers');
 Route::post('/calpoints', 'CustomersUsersController@CalPoints');
 Route::post('/addpoints', 'CustomersUsersController@AddPoints');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class RewardsHistoryController extends Controller {
@@ -16,8 +17,26 @@ class RewardsHistoryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('rewardshistory.index');
+        try {
+            $orders = DB::table('rewards_history')
+                    ->select('first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address')
+                    ->join('rewards_stock', 'rewards_history.rewards_code', '=', 'rewards_stock.reward_code')
+                    ->join('customers_users', 'rewards_history.customers_id', '=', 'customers_users.customers_id')
+                    ->join('orders_status', 'rewards_history.order_status', '=', 'orders_status.id')
+                    ->get();
+            return view('rewardshistory.index', [
+                'orders' => $orders
+            ]);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
+
+    public function OrderDetial(Request $request) {
+        echo "-*-";
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
