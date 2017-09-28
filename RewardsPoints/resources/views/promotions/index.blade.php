@@ -25,16 +25,6 @@
                         </p>
                     </div>
 
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <center>{{ $error }}</center>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-
                     <table class="table table-striped table-hover ">
                         <thead>
                             <tr class="info">
@@ -78,21 +68,28 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"><center>กรอกรายละเอียด</center></div>
                 <div class="panel-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <center>{{ $error }}</center>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     {!! Form::open(['url' => 'dealrewards']) !!}
                     <table class="table table-striped table-hover ">
                         <tbody>                           
                             {{ Form::hidden('customers_id', $customers_id) }}
                             {{ Form::hidden('customers_points', $points) }}
-                            {{ Form::hidden('rewards_code', $reward_code) }}
-                            {{ Form::hidden('rewards_points', $reward->reward_points) }}
                             {{ csrf_field() }}
                             <tr>
                                 <td>{{ Form::label('lb_reward_code', 'รหัส') }}</td>
-                                <td>{{ Form::text('new_amount', null, ['class' => 'form-control', 'placeholder'=> 'ระบุรหัสของรางวัล']) }}</td>
+                                <td>{{ Form::text('reward_code', null, ['class' => 'form-control', 'placeholder'=> 'ระบุรหัสของรางวัล']) }}</td>
                             </tr>
                             <tr>
                                 <td>{{ Form::label('lb_reward_amount', 'จำนวน') }}</td>
-                                <td>{{ Form::text('new_amount', null, ['class' => 'form-control', 'placeholder'=> 'ระบุจำนวนของรางวัล']) }}</td>
+                                <td>{{ Form::text('reward_amount', null, ['class' => 'form-control', 'placeholder'=> 'ระบุจำนวนของรางวัล']) }}</td>
                             </tr>
                             <tr>
                                 <td></td>

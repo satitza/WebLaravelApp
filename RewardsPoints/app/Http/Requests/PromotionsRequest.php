@@ -22,14 +22,16 @@ class PromotionsRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'new_amount' => 'required|integer',
+            'reward_code' => 'required',
+            'reward_amount' => 'required|integer',
         ];
     }
 
     public function messages() {
         return [
-            'new_amount.required' => 'กรุณากรอกจำนวนของรางวัล',
-            'new_amount.integer' => 'กรุณากรอกจำนวนของรางวัลเป็นตัวเลข',
+            'reward_code.required' => 'กรุณากรอกรหัสของรางวัล',
+            'reward_amount.required' => 'กรุณากรอกจำนวนของรางวัล',
+            'reward_amount.integer' => 'กรุณากรอกจำนวนของรางวัลเป็นตัวเลข',
         ];
     }
 

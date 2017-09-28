@@ -43,15 +43,33 @@ class PromotionController extends Controller {
         }
     }
 
-    public function DealRewards(Request $request) {
-        $total_points = intval($request->reward_points) * intval($request->new_amount);
+    public function DealRewards(PromotionsRequest $request) {
+        /*check reward code == true  */
+        if (!RewardsStock::where('rewards_code', '=', $request->reward_code)->count() > 0){
+             //return error page
+            echo "ไม่พบของรางวัลที่คุณต้องการ";
+        }
+        else{
+           
+        }
+        
+        
+        /*check customers points  */
+        
+        
+        
+        
+        /*$total_points = intval($request->reward_points) * intval($request->new_amount);
         $rewards_stock = RewardsStock::where('id', '=', $request->reward_id)->firstOrFail();
         if ($total_points > $request->customers_points) {
             return view('promotions.no_enough');
         } else if ($request->new_amount > $rewards_stock->amount) {
             echo "ของรางวัลมีไม่เพียงพอสำหรับใช้คะแนนแลก";
-        } else {      
-            $sum_points = intval($request->customers_points) - $total_points;
+        } else {   */   
+        
+        
+        
+            /*$sum_points = intval($request->customers_points) - $total_points;
             DB::beginTransaction();
             try {
                 $table = New RewardsHistory();
@@ -88,7 +106,7 @@ class PromotionController extends Controller {
                 DB::rollback();
                 echo $e->getMessage();
             }
-        }
+        }*/
     }
 
     /**

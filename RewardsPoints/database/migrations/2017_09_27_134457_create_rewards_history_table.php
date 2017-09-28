@@ -16,7 +16,7 @@ class CreateRewardsHistoryTable extends Migration
         Schema::create('rewards_history', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customers_id')->unsigned();
-            $table->integer('rewards_code')->unsigned();
+            $table->string('rewards_code')->nullable();
             $table->integer('rewards_amount')->unsigned();
             $table->integer('total_points')->unsigned();
             $table->date('order_date')->nullable();
