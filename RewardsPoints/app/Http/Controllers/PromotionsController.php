@@ -91,8 +91,6 @@ class PromotionsController extends Controller {
                   return redirect()->action(
                   'PromotionsController@index', ['user_key' => $customers->user_key]
                   );
-
-                //return redirect("http://www.perflexgroup.com/my-account");
             }
         }
     }

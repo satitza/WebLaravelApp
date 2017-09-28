@@ -26,6 +26,7 @@ class RewardsStockRequest extends FormRequest {
      */
     public function rules() {
         return [
+            'reward_code' => 'required',
             'reward_name' => 'required',
             'reward_detial' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -36,6 +37,7 @@ class RewardsStockRequest extends FormRequest {
 
     public function messages() {
         return [
+            'reward_code.required' => 'กรุณากรอกรหัสของรางวัล',
             'reward_name.required' => 'กรุณากรอกชื่อของรางวัล',
             'reward_detial.required' => 'กรุณากรอกรายละเอียดของรางวัล',
             'image.required' => 'กรุณาอัพโหลดรูปภาพของรางวัล',

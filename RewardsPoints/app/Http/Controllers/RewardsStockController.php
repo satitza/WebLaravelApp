@@ -46,7 +46,9 @@ class RewardsStockController extends Controller {
     }
 
     public function AddRewards(RewardsStockRequest $request) {
-        if (Input::hasFile('image')) {
+        if (RewardsStock::where('reward_code', '=', $request->reward_code)->count() > 0) {
+            echo "มีรหัสของรางวัลนี้อยู่ในฐานข้อมูลแล้ว";
+        } else if (Input::hasFile('image')) {
             try {
                 $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $destinationPath = public_path('/reward_images');
@@ -64,7 +66,7 @@ class RewardsStockController extends Controller {
                 echo $e->getMessage();
             }
         } else {
-            echo "Images upload not found";
+            echo "Images upload not found!";
         }
     }
 
@@ -77,7 +79,7 @@ class RewardsStockController extends Controller {
      * 
      */
     public function store(Request $request) {
-
+        
     }
 
     public function ShowFormEditReward(Request $request) {
