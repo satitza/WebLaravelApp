@@ -21,7 +21,7 @@ class PromotionsController extends Controller {
             try {
                 $customers = CustomersUsers::where('user_key', $user_key)->get();
                 //$rewards = RewardsStock::paginate(5);
-                $rewards = RewardsStock::paginate(3);
+                $rewards = RewardsStock::paginate(5);
                 foreach ($customers as $customer) {
                     
                 }

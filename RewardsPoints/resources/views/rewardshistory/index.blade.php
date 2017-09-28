@@ -21,6 +21,9 @@
                         </thead>
                         <tbody>
                             @foreach($orders as $order)
+                            @php
+                               $customers_id = $order->customers_id;
+                            @endphp
                             <tr>
                                 <td>{{ $order->first_name }} {{ $order->last_name }}</td>
                                 <td>{{ $order->reward_name }}</td>
@@ -31,6 +34,7 @@
                                 <td>{{ $order->ip_address }}</td>
                                 <td>
                                     {!! Form::open(['url' => 'rewardshistory/detial']) !!}
+                                    {{ Form::hidden('customers_id', $customers_id) }}
                                     {{ Form::submit('ดูรายละเอียด', ['class' => 'btn btn-info']) }}
                                     {{ csrf_field() }}
                                     {!! Form::close() !!}
