@@ -53,6 +53,8 @@ class PromotionsController extends Controller {
             } else if ($request->reward_amount > $reward_stock->amount) {
                 echo "ของรางวัลไม่ไม่เพียงพอ";
             } else {
+                $customers = CustomersUsers::where('customers_id', '=', $request->customers_id)->firstOrFail();
+                $from_host = $customers->from_host;
                 DB::beginTransaction();
                 try {
                     $table = New RewardsHistory();
@@ -63,6 +65,7 @@ class PromotionsController extends Controller {
                     $table->order_date = date("Y-m-d");
                     $table->order_status = 1;
                     $table->ip_address = $request->ip();
+                    $table->from_host = $from_host;
                     $table->save();
 
                     $sum_points = $request->customers_points - $total_points;
@@ -86,11 +89,9 @@ class PromotionsController extends Controller {
                     DB::rollback();
                     echo $e->getMessage();
                 }
-                //echo "success";
-                $customers = CustomersUsers::where('customers_id', '=', $request->customers_id)->firstOrFail();
-                  return redirect()->action(
-                  'PromotionsController@index', ['user_key' => $customers->user_key]
-                  );
+                return redirect()->action(
+                                'PromotionsController@index', ['user_key' => $customers->user_key]
+                );
             }
         }
     }

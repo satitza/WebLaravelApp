@@ -17,6 +17,7 @@
                                 <th>วันที่</th>
                                 <th>สถานะ</th>
                                 <th>IP Address</th>
+                                <th>Host</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,7 @@
                                 <td>{{ $order->order_date }}</td>
                                 <td>{{ $order->status }}</td>     
                                 <td>{{ $order->ip_address }}</td>
+                                <td>{{ $order->from_host }}</td>
                                 <td>
                                     {!! Form::open(['url' => 'rewardshistory/detial']) !!}
                                     {{ Form::hidden('customers_id', $customers_id) }}

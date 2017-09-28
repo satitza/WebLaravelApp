@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use Automattic\WooCommerce\Client;
 
 class RewardsHistoryController extends Controller {
 
@@ -19,7 +20,7 @@ class RewardsHistoryController extends Controller {
     public function index() {
         try {
             $orders = DB::table('rewards_history')
-                    ->select('rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address')
+                    ->select('rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address', 'rewards_history.from_host')
                     ->join('rewards_stock', 'rewards_history.rewards_code', '=', 'rewards_stock.reward_code')
                     ->join('customers_users', 'rewards_history.customers_id', '=', 'customers_users.customers_id')
                     ->join('orders_status', 'rewards_history.order_status', '=', 'orders_status.id')
@@ -33,11 +34,28 @@ class RewardsHistoryController extends Controller {
     }
 
     public function OrderDetial(Request $request) {
-        echo $request->customers_id;
+        try {
+            $orders = DB::table('rewards_history')
+                    ->select('rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address')
+                    ->join('rewards_stock', 'rewards_history.rewards_code', '=', 'rewards_stock.reward_code')
+                    ->join('customers_users', 'rewards_history.customers_id', '=', 'customers_users.customers_id')
+                    ->join('orders_status', 'rewards_history.order_status', '=', 'orders_status.id')
+                    ->where('rewards_history.customers_id', '=', $request->customers_id)
+                    ->get();
+
+            foreach ($orders as $order) {
+                
+            }
+            echo $order->customers_id;
+
+            /* return view('rewardshistory.detial', [
+              'orders' => $orders
+              ]); */
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
         //return view('rewardshistory.detial');
     }
-
-
 
     /**
      * Show the form for creating a new resource.
