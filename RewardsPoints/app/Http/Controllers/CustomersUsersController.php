@@ -77,7 +77,7 @@ class CustomersUsersController extends Controller {
                 return redirect()->action('CustomersUsersController@index');
             }
         } catch (HttpClientException $e) {
-            echo $e->getMessage();
+            return view('error.index')->with('error_message', 'ไม่พบ Customer ที่ค้นหา');
         }
     }
 
