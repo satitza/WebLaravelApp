@@ -106,9 +106,9 @@
                     <tr>
                         <td>
                             <div class="card" style="width: 20rem;">
-                                <img class="card-img-top" src="{{ asset('reward_images/1506664017.jpg') }}" alt="First slide" height="150">
+                                <img class="card-img-top" src="{{ asset($order->path_images) }}" alt="First slide" height="250">
                                 <div class="card-body">
-                                    <p class="card-text">Anonymous Hacker</p>
+                                    <p class="card-text">{{ $order->reward_detial }}</p>
                                 </div>
                             </div>
                         </td>
