@@ -57,7 +57,7 @@ class RewardsStockController extends Controller {
                 $reward_stock->reward_code = $request->reward_code;
                 $reward_stock->reward_name = $request->reward_name;
                 $reward_stock->reward_detial = $request->reward_detial;
-                $reward_stock->path_images = '/reward_images/' . $filename;
+                $reward_stock->path_images = $filename;
                 $reward_stock->amount = $request->reward_amount;
                 $reward_stock->reward_points = $request->reward_points;
                 $reward_stock->save();
@@ -99,14 +99,16 @@ class RewardsStockController extends Controller {
         }
     }
 
-    public function DeleteReward(Request $request) {
-        try {
-            $reward_stock = RewardsStock::find($request->reward_id);
+    public function DeleteReward($id) {
+        echo $id;
+        /*try {
+            $reward_stock = RewardsStock::find($request->reward_id);       
+            File::delete(public_path().'\\reward_images\\'.$reward_stock->path_images);
             $reward_stock->delete();
             return redirect()->action('RewardsStockController@index');
         } catch (Exception $e) {
             echo $e->getMessage();
-        }
+        }*/
     }
 
     /**

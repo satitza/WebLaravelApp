@@ -50,7 +50,7 @@
         <center><div class="panel-heading">รายชื่อ Customers ที่มีอยู่ในฐานข้อมูลแล้ว</div></center>
         <table class="table table-striped table-hover ">
             <thead>
-                <tr class="success">
+                <tr>
                     <th>รหัส</th>
                     <th>วันที่สมัครส</th>
                     <th>อีเมล์</th>

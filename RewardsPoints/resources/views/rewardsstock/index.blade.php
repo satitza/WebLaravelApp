@@ -21,9 +21,12 @@
                     </thead>
                     <tbody>
                         @foreach ($rewards as $reward)
+                        @php 
+                           $reward_id = $reward->id 
+                        @endphp
                         <tr>   
                             <td>{{ $reward->reward_code }}</td>
-                            <td><img class="d-block w-50" src="{{ asset($reward->path_images) }}" alt="First slide" height="150"></td>                     
+                            <td><img class="d-block w-50" src="{{ asset('/reward_images/'.$reward->path_images) }}" alt="First slide" height="150"></td>                     
                             <td>{{ $reward->reward_name }}</td>
                             <td>{{ $reward->reward_detial }}</td>
                             <td>{{ $reward->amount }}</td>
@@ -43,7 +46,7 @@
 
                             </th>
                             <th>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" id="set_id" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                     Delete Rewards
                                 </button>
                                 <?php /*
@@ -81,16 +84,19 @@
                 คุณต้องการที่จะลบของรางวัลชิ้นนี้ออกจากระบบ
             </div>
             <div class="modal-footer">
-                {!! Form::open(['url' => 'rewardsstock_delete']) !!}
-                {{ Form::hidden('reward_id', $reward->id) }}
-                {{ Form::submit('ยืนยัน', ['class' => 'btn btn-danger']) }}
-                {{ csrf_field() }}
-                {!! Form::close() !!}
-                <!--button type="submit" class="btn btn-primary" href="#">Save changes</button-->
+                <?php /* {!! Form::open(['url' => 'rewardsstock_delete']) !!}
+                  {{ Form::hidden('reward_id', $reward_id) }}
+                  {{ Form::submit('ยืนยัน', ['class' => 'btn btn-danger']) }}
+                  {{ csrf_field() }}
+                  {!! Form::close() !!} */ ?> 
+                <button type="button" class="btn btn-danger">
+                    <a href="{{ url('rewardsstock_delete/'.$reward_id) }}">
+                        Delete Rewards
+                    </a>
+                </button>
             </div>
         </div>
     </div>
 </div>
-
 
 @endsection

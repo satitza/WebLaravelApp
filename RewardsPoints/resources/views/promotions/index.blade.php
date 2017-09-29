@@ -98,6 +98,7 @@
         </div>
     </div>
 </div>
+
 <footer>
     The Founder Corp Rewards Points
 </footer>
