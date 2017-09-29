@@ -70,7 +70,6 @@
                                     <th>รายละเอียด</th>
                                     <th>จำนวนคงเหลือ</th>
                                     <th>คะแนนที่ใช้แลก</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,13 +79,10 @@
                                 @endphp
                                 <tr>   
                                     <td>{{ $reward->reward_code }}</td>
-                                    <td><img class="d-block w-50" src="{{ asset($reward->path_images) }}" alt="First slide" height="150"></td>                     
+                                    <td><img class="d-block w-50" src="{{ asset('reward_images/'.$reward->path_images) }}" alt="First slide" height="150"></td>                     
                                     <td>{{ $reward->reward_detial }}</td>
                                     <td>{{ $reward->amount }}</td>
                                     <td>{{ $reward->reward_points }}</td>
-                                    <th>
-
-                                    </th>
                                 </tr>
                                 @endforeach
                             </tbody>

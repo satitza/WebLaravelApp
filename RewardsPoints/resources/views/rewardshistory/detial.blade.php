@@ -100,7 +100,7 @@
                     <tr>
                         <td>
                             <div class="card" style="width: 20rem;">
-                                <img class="card-img-top" src="{{ asset($order->path_images) }}" alt="First slide" height="250">
+                                <img class="card-img-top" src="{{ asset('reward_images/'.$order->path_images) }}" alt="First slide" height="250">
                                 <div class="card-body">
                                     <p class="card-text">{{ $order->reward_detial }}</p>
                                 </div>
@@ -118,12 +118,14 @@
         <tr>
             <td width="250">
                 {!! Form::open(['url' => 'rewardshistory/success']) !!}
+                {{ Form::hidden('order_id', $order->id) }}
                 {{ Form::submit('จัดส่งของเรียบร้อยแล้ว', ['class' => 'btn btn-success']) }}
                 {{ csrf_field() }}
                 {!! Form::close() !!}
             </td>
             <td width="250">
                 {!! Form::open(['url' => 'rewardshistory/stop']) !!}
+                {{ Form::hidden('order_id', $order->id) }}
                 {{ Form::submit('ระงับการจัดส่งชั้วคราว', ['class' => 'btn btn-danger']) }}
                 {{ csrf_field() }}
                 {!! Form::close() !!}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\WCHost;
+use App\RewardsHistory;
 use Illuminate\Http\Request;
 use Automattic\WooCommerce\Client;
 
@@ -37,7 +38,7 @@ class RewardsHistoryController extends Controller {
     public function OrderDetial(Request $request) {
         try {
             $orders = DB::table('rewards_history')
-                    ->select('rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address', 'rewards_history.from_host', 'rewards_stock.reward_detial', 'rewards_stock.path_images')
+                    ->select('rewards_history.id', 'rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address', 'rewards_history.from_host', 'rewards_stock.reward_detial', 'rewards_stock.path_images')
                     ->join('rewards_stock', 'rewards_history.rewards_code', '=', 'rewards_stock.reward_code')
                     ->join('customers_users', 'rewards_history.customers_id', '=', 'customers_users.customers_id')
                     ->join('orders_status', 'rewards_history.order_status', '=', 'orders_status.id')
@@ -65,11 +66,34 @@ class RewardsHistoryController extends Controller {
     }
 
     public function OrderSuccess(Request $request) {
-        echo "success";
+        try {
+            DB::table('rewards_history')
+                    ->where('id', $request->order_id)
+                    ->update([
+                        'order_status' => 3
+            ]);
+            return redirect()->action('RewardsHistoryController@index');
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
     }
 
     public function OrderStop(Request $request) {
-        echo "stop";
+        $order_history = RewardsHistory::find($request->order_id);
+        if ($order_history->order_status == 3) {
+            echo "ไม่สามารถแก้ใขสถานะรายการใด้";
+        } else {
+            try {
+                DB::table('rewards_history')
+                        ->where('id', $request->order_id)
+                        ->update([
+                            'order_status' => 2
+                ]);
+                return redirect()->action('RewardsHistoryController@index');
+            } catch (Exception $e) {
+                $e->getMessage();
+            }
+        }
     }
 
     /**

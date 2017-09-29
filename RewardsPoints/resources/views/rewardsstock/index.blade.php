@@ -16,7 +16,6 @@
                             <th>จำนวนคงเหลือ</th>
                             <th>คะแนนที่ใช้แลก</th>
                             <th>แก้ใขรายละเอียด</th>
-                            <th>ลบของรางวัล</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,9 +45,6 @@
 
                             </th>
                             <th>
-                                <button type="button" id="set_id" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                    Delete Rewards
-                                </button>
                                 <?php /*
                                   {!! Form::open(['url' => 'rewardsstock/delete']) !!}
                                   {{ Form::hidden('reward_id', $reward->id) }}
@@ -90,7 +86,7 @@
                   {{ csrf_field() }}
                   {!! Form::close() !!} */ ?> 
                 <button type="button" class="btn btn-danger">
-                    <a href="{{ url('rewardsstock_delete/'.$reward_id) }}">
+                    <a href="#">
                         Delete Rewards
                     </a>
                 </button>
