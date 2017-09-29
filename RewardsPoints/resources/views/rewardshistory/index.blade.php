@@ -35,7 +35,7 @@
                                 <td>{{ $order->ip_address }}</td>
                                 <td>{{ $order->from_host }}</td>
                                 <td>
-                                    {!! Form::open(['url' => 'rewardshistory/detial']) !!}
+                                    {!! Form::open(['url' => 'ordertetial']) !!}
                                     {{ Form::hidden('customers_id', $customers_id) }}
                                     {{ Form::submit('ดูรายละเอียด', ['class' => 'btn btn-info']) }}
                                     {{ csrf_field() }}

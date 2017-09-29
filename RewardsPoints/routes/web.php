@@ -34,7 +34,9 @@ Route::post('/rewardsstock/delete', 'RewardsStockController@DeleteReward');
 Route::post('/rewardsstock/edit', 'RewardsStockController@ShowFormEditReward');
 Route::post('/rewardsstock/update', 'RewardsStockController@EditReward');
 
-Route::post('/rewardshistory/detial', 'RewardsHistoryController@OrderDetial');
+Route::post('/ordertetial', 'RewardsHistoryController@OrderDetial');
+Route::post('/rewardshistory/success', 'RewardsHistoryController@OrderSuccess');
+Route::post('/rewardshistory/stop', 'RewardsHistoryController@OrderStop');
 
 
 
