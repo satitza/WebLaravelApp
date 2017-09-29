@@ -29,10 +29,10 @@ Route::resource('/rewardshistory', 'RewardsHistoryController');
 
 Route::get('/addrewards', 'RewardsStockController@ShowFormAddReward');
 Route::get('/editrewards', 'RewardsStockController@ShowFormEditReward');
-Route::post('/rewardsstock/add', 'RewardsStockController@AddRewards');
-Route::post('/rewardsstock/delete', 'RewardsStockController@DeleteReward');
-Route::post('/rewardsstock/edit', 'RewardsStockController@ShowFormEditReward');
-Route::post('/rewardsstock/update', 'RewardsStockController@EditReward');
+Route::post('/rewardsstock_add', 'RewardsStockController@AddRewards');
+Route::post('/rewardsstock_delete', 'RewardsStockController@DeleteReward');
+Route::post('/rewardsstock_edit', 'RewardsStockController@ShowFormEditReward');
+Route::post('/rewardsstock_update', 'RewardsStockController@EditReward');
 
 Route::post('/ordertetial', 'RewardsHistoryController@OrderDetial');
 Route::post('/rewardshistory/success', 'RewardsHistoryController@OrderSuccess');

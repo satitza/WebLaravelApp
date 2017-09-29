@@ -31,16 +31,10 @@
                                 <td>{{ $order->order_date }}</td>
                                 <td>{{ $order->status }}</td>
                                 <td>
-                                    {!! Form::open(['url' => 'rewardshistory/success']) !!}
-                                    {{ Form::submit('ส่งแล้ว', ['class' => 'btn btn-success']) }}
-                                    {{ csrf_field() }}
-                                    {!! Form::close() !!}
+
                                 </td>
                                 <td>
-                                    {!! Form::open(['url' => 'rewardshistory/stop']) !!}
-                                    {{ Form::submit('ระงับ', ['class' => 'btn btn-danger']) }}
-                                    {{ csrf_field() }}
-                                    {!! Form::close() !!}
+
                                 </td>
                                 <td>{{ $order->ip_address }}</td>
                                 <td>{{ $order->from_host }}</td>
@@ -118,4 +112,23 @@
         </div>
     </div>
 </div>
+<hr>
+<center>
+    <table>
+        <tr>
+            <td width="250">
+                {!! Form::open(['url' => 'rewardshistory/success']) !!}
+                {{ Form::submit('จัดส่งของเรียบร้อยแล้ว', ['class' => 'btn btn-success']) }}
+                {{ csrf_field() }}
+                {!! Form::close() !!}
+            </td>
+            <td width="250">
+                {!! Form::open(['url' => 'rewardshistory/stop']) !!}
+                {{ Form::submit('ระงับการจัดส่งชั้วคราว', ['class' => 'btn btn-danger']) }}
+                {{ csrf_field() }}
+                {!! Form::close() !!}
+            </td>
+        </tr>
+    </table>
+</center>
 @endsection

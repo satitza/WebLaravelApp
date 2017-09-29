@@ -16,7 +16,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><center>แก้ใขของรางวัล</center></div>
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'rewardsstock/update', 'files' => true]) !!}
+                    {!! Form::open(['url' => 'rewardsstock_update', 'files' => true]) !!}
                     <table class="table table-striped table-hover ">
                         <thead>
                             <tr class="">

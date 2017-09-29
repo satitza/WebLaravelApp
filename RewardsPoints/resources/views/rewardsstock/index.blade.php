@@ -29,18 +29,22 @@
                             <td>{{ $reward->amount }}</td>
                             <td>{{ $reward->reward_points }}</td>
                             <th>
-                                {!! Form::open(['url' => 'rewardsstock/edit']) !!}
+                                {!! Form::open(['url' => 'rewardsstock_edit']) !!}
                                 {{ Form::hidden('reward_id', $reward->id) }}
                                 {{ Form::submit('Edit Reward', ['class' => 'btn btn-warning']) }}                              
                                 {{ csrf_field() }}
                                 {!! Form::close() !!}
                             </th>
                             <th>
-                                {!! Form::open(['url' => 'rewardsstock/delete']) !!}
-                                {{ Form::hidden('reward_id', $reward->id) }}
-                                {{ Form::submit('Delete Reward', ['class' => 'btn btn-danger']) }}                              
-                                {{ csrf_field() }}
-                                {!! Form::close() !!}
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                    Delete Rewards
+                                </button>
+                                <?php /*
+                                  {!! Form::open(['url' => 'rewardsstock/delete']) !!}
+                                  {{ Form::hidden('reward_id', $reward->id) }}
+                                  {{ Form::submit('Delete Reward', ['class' => 'btn btn-danger']) }}
+                                  {{ csrf_field() }}
+                                  {!! Form::close() !!} */ ?>
                             </th>
                         </tr>
                         @endforeach
@@ -55,4 +59,31 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ยืนยันการลบข้อมูล</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                คุณต้องการที่จะลบของรางวัลชิ้นนี้ออกจากระบบ
+            </div>
+            <div class="modal-footer">
+                {!! Form::open(['url' => 'rewardsstock_delete']) !!}
+                {{ Form::hidden('reward_id', $reward->id) }}
+                {{ Form::submit('ยืนยัน', ['class' => 'btn btn-danger']) }}
+                {{ csrf_field() }}
+                {!! Form::close() !!}
+                <!--button type="submit" class="btn btn-primary" href="#">Save changes</button-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection
