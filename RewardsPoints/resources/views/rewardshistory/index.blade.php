@@ -36,7 +36,7 @@
                                 <td>{{ $order->from_host }}</td>
                                 <td>
                                     {!! Form::open(['url' => 'ordertetial']) !!}
-                                    {{ Form::hidden('customers_id', $customers_id) }}
+                                    {{ Form::hidden('order_id', $order->id) }}
                                     {{ Form::submit('ดูรายละเอียด', ['class' => 'btn btn-info']) }}
                                     {{ csrf_field() }}
                                     {!! Form::close() !!}

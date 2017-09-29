@@ -22,7 +22,7 @@ class RewardsHistoryController extends Controller {
     public function index() {
         try {
             $orders = DB::table('rewards_history')
-                    ->select('rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address', 'rewards_history.from_host')
+                    ->select('rewards_history.id','rewards_history.customers_id', 'first_name', 'last_name', 'reward_name', 'rewards_amount', 'total_points', 'order_date', 'status', 'ip_address', 'rewards_history.from_host')
                     ->join('rewards_stock', 'rewards_history.rewards_code', '=', 'rewards_stock.reward_code')
                     ->join('customers_users', 'rewards_history.customers_id', '=', 'customers_users.customers_id')
                     ->join('orders_status', 'rewards_history.order_status', '=', 'orders_status.id')
@@ -42,7 +42,7 @@ class RewardsHistoryController extends Controller {
                     ->join('rewards_stock', 'rewards_history.rewards_code', '=', 'rewards_stock.reward_code')
                     ->join('customers_users', 'rewards_history.customers_id', '=', 'customers_users.customers_id')
                     ->join('orders_status', 'rewards_history.order_status', '=', 'orders_status.id')
-                    ->where('rewards_history.customers_id', '=', $request->customers_id)
+                    ->where('rewards_history.id', '=', $request->order_id)
                     ->get();
 
             foreach ($orders as $order) {
@@ -56,7 +56,7 @@ class RewardsHistoryController extends Controller {
                 'version' => 'wc/v2',
                     ]
             );
-            $customers = $woocommerce->get('customers/' . $request->customers_id);
+            $customers = $woocommerce->get('customers/' . $order->customers_id);
             return view('rewardshistory.detial', [
                         'order' => $order
                     ])->with('customers', $customers);
