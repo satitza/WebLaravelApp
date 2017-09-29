@@ -68,7 +68,6 @@
                             <li class="dropdown">                           
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Add Host</a></li>
                                     <li><a href="{{ route('register') }}">Add User</a></li>
                                     <li><a href="#">Points Settings</a></li>
                                 </ul>
