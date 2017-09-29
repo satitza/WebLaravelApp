@@ -48,7 +48,7 @@ class RewardsStockController extends Controller {
 
     public function AddRewards(RewardsStockRequest $request) {
         if (RewardsStock::where('reward_code', '=', $request->reward_code)->count() > 0) {
-            echo "มีรหัสของรางวัลนี้อยู่ในฐานข้อมูลแล้ว";
+            return view('error.index')->with('error_message', 'มีรหัสของรางวัลนี้อยู่ในฐานข้อมูลแล้ว');
         } else if (Input::hasFile('image')) {
             try {
                 $filename = time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -67,7 +67,7 @@ class RewardsStockController extends Controller {
                 echo $e->getMessage();
             }
         } else {
-            echo "Images upload not found!";
+            return view('error.index')->with('error_message', 'คุณยังไม่ใด้ upload รูปภาพ');
         }
     }
 
@@ -97,18 +97,6 @@ class RewardsStockController extends Controller {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-    }
-
-    public function DeleteReward($id) {
-        echo $id;
-        /*try {
-            $reward_stock = RewardsStock::find($request->reward_id);       
-            File::delete(public_path().'\\reward_images\\'.$reward_stock->path_images);
-            $reward_stock->delete();
-            return redirect()->action('RewardsStockController@index');
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }*/
     }
 
     /**

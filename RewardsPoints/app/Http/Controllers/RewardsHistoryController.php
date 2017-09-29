@@ -81,7 +81,7 @@ class RewardsHistoryController extends Controller {
     public function OrderStop(Request $request) {
         $order_history = RewardsHistory::find($request->order_id);
         if ($order_history->order_status == 3) {
-            echo "ไม่สามารถแก้ใขสถานะรายการใด้";
+            return view('error.index')->with('error_message', 'ไม่สามารถแก้ใขสถานะรายการใด้');
         } else {
             try {
                 DB::table('rewards_history')

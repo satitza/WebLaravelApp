@@ -48,7 +48,7 @@ class CustomersUsersController extends Controller {
             );
             $get_customers = $woocommerce->get('customers/' . $customers_id);
             if ($get_customers["total_spent"] < 50) {
-                echo "จำนวนเงินลูกค้ายังไม่สามารถคำนวนเป็นคะแนนใด้";
+                return view('error.index')->with('error_message', 'จำนวนเงินลูกค้ายังไม่สามารถคำนวนเป็นคะแนนใด้');
             } else if (CustomersUsers::where('customers_id', '=', $get_customers["id"])->count() > 0 &&
                     CustomersUsers::where('from_host', '=', $wc_host)->count() > 0
             ) {

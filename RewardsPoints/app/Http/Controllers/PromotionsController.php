@@ -42,16 +42,17 @@ class PromotionsController extends Controller {
 
     public function DealRewards(PromotionsRequest $request) {
         if (!RewardsStock::where('reward_code', '=', $request->reward_code)->count() > 0) {
-            //return error page
-            echo "ไม่พบของรางวัลที่คุณต้องการ";
+            return view('error.index')->with('error_message', 'ไม่พบของรางวัลที่คุณต้องการ');
         } else {
             //check customers points
             $reward_stock = RewardsStock::where('reward_code', '=', $request->reward_code)->firstOrFail();
             $total_points = intval($reward_stock->reward_points) * intval($request->reward_amount);
             if ($total_points > $request->customers_points) {
-                echo "คะแนนของคุณไม่เพียงพอสำหรับแลกของรางวัล";
+                return view('error.index')->with('error_message', 'คะแนนของคุณไม่เพียงพอสำหรับแลกของรางวัล');
             } else if ($request->reward_amount > $reward_stock->amount) {
-                echo "ของรางวัลไม่ไม่เพียงพอ";
+                return view('error.index')->with('error_message', 'ของรางวัลไม่ไม่เพียงพอ');
+            } else if ($request->reward_amount < 1) {
+                return view('error.index')->with('error_message', 'คุณกรอกจำนวนไม่ตรงกับเงื่อนใขที่กำหนด');
             } else {
                 $customers = CustomersUsers::where('customers_id', '=', $request->customers_id)->firstOrFail();
                 $from_host = $customers->from_host;
