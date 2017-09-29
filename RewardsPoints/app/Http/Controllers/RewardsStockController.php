@@ -8,6 +8,7 @@ use App\RewardsStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\RewardsStockRequest;
+use App\Http\Requests\RewardsStockUpdateRequest;
 
 class RewardsStockController extends Controller {
 
@@ -82,22 +83,7 @@ class RewardsStockController extends Controller {
         
     }
 
-    public function ShowFormEditReward(Request $request) {
-        try {
-            $reward_stock = RewardsStock::find($request->reward_id);
-            return view('rewardsstock.editrewards', [
-                'reward_id' => $reward_stock->id,
-                'reward_name' => $reward_stock->reward_name,
-                'reward_detial' => $reward_stock->reward_detial,
-                'amount' => $reward_stock->amount,
-                'reward_points' => $reward_stock->reward_points
-            ]);
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    public function EditReward(Request $request) {
+    public function EditReward(RewardsStockUpdateRequest $request) {
         try {
             DB::table('rewards_stock')
                     ->where('id', $request->reward_id)
@@ -140,7 +126,19 @@ class RewardsStockController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        try {
+            $reward_stock = RewardsStock::find($id);
+            return view('rewardsstock.editrewards', [
+                'reward_code' => $reward_stock->reward_code,
+                'reward_id' => $reward_stock->id,
+                'reward_name' => $reward_stock->reward_name,
+                'reward_detial' => $reward_stock->reward_detial,
+                'amount' => $reward_stock->amount,
+                'reward_points' => $reward_stock->reward_points
+            ]);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     /**

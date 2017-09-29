@@ -29,11 +29,18 @@
                             <td>{{ $reward->amount }}</td>
                             <td>{{ $reward->reward_points }}</td>
                             <th>
-                                {!! Form::open(['url' => 'rewardsstock_edit']) !!}
-                                {{ Form::hidden('reward_id', $reward->id) }}
-                                {{ Form::submit('Edit Reward', ['class' => 'btn btn-warning']) }}                              
-                                {{ csrf_field() }}
-                                {!! Form::close() !!}
+                                <?php /*
+                                  {!! Form::open(['url' => 'rewardsstock_edit']) !!}
+                                  {{ Form::hidden('reward_id', $reward->id) }}
+                                  {{ Form::submit('Edit Reward', ['class' => 'btn btn-warning']) }}
+                                  {{ csrf_field() }}
+                                  {!! Form::close() !!} */ ?>
+                                <button type="button" class="btn btn-info">
+                                    <a href="{{ url('rewardsstock/'.$reward->id.'/edit') }}">
+                                        Edit Rewards
+                                    </a>
+                                </button>
+
                             </th>
                             <th>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">

@@ -13,7 +13,7 @@
                 </ul>
             </div>
             @endif
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading"><center>แก้ใขของรางวัล</center></div>
                 <div class="panel-body">
                     {!! Form::open(['url' => 'rewardsstock_update', 'files' => true]) !!}
@@ -26,8 +26,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ Form::label('lb_reward_id', 'Reward ID') }}</td>
-                                <td>{{ $reward_id }}</td>
+                                <td>{{ Form::label('lb_reward_code', 'Reward Code') }}</td>
+                                <td>{{ $reward_code }}</td>
                             </tr>
                             <tr>
                                 <td>{{ Form::label('lb_reward_name', 'ชื่อของรางวัล') }}</td>
