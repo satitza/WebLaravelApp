@@ -36,7 +36,7 @@ class PromotionsController extends Controller {
             }
         } else {
             //return error page
-            echo "ไม่พบผู้ใช้งาน";
+            return view('error.index')->with('error_message', 'ไม่พบผู้ใช้งาน');
         }
     }
 
