@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\WCHost;
 use App\CustomersUsers;
+use App\PointsSettings;
 use Illuminate\Http\Request;
 use Automattic\WooCommerce\Client;
 use App\Http\Requests\CustomersUsersRequest;
@@ -39,6 +40,10 @@ class CustomersUsersController extends Controller {
         $wc_host = $request->get('wc_item');
         $customers_id = $request->customers_id;
         $wc_key = WCHost::where('wc_host', '=', $wc_host)->firstOrFail();
+        $points_settings = PointsSettings::all();
+        foreach ($points_settings as $points) {
+            
+        }
         try {
             $woocommerce = new Client(
                     $wc_key->wc_host, $wc_key->consumer_key, $wc_key->consumer_secret, [
@@ -47,7 +52,7 @@ class CustomersUsersController extends Controller {
                     ]
             );
             $get_customers = $woocommerce->get('customers/' . $customers_id);
-            if ($get_customers["total_spent"] < 50) {
+            if ($get_customers["total_spent"] < $points->points_settings) {
                 return view('error.index')->with('error_message', 'จำนวนเงินลูกค้ายังไม่สามารถคำนวนเป็นคะแนนใด้');
             } else if (CustomersUsers::where('customers_id', '=', $get_customers["id"])->count() > 0 &&
                     CustomersUsers::where('from_host', '=', $wc_host)->count() > 0
@@ -55,7 +60,7 @@ class CustomersUsersController extends Controller {
                 return redirect()->action('CustomersUsersController@index');
             } else {
 
-                $points = $get_customers["total_spent"] / 50;
+                $points = $get_customers["total_spent"] / $points->points_settings;
                 $user_key_encrypted = md5($wc_key->wc_host . $customers_id);
 
                 $table = New CustomersUsers();
@@ -83,6 +88,10 @@ class CustomersUsersController extends Controller {
 
     public function CalPoints(Request $request) {
         $wc_key = WCHost::where('wc_host', '=', $request->from_host)->firstOrFail();
+        $points_settings = PointsSettings::all();
+        foreach ($points_settings as $points) {
+            
+        }
         try {
             $woocommerce = new Client(
                     $wc_key->wc_host, $wc_key->consumer_key, $wc_key->consumer_secret, [
@@ -94,7 +103,7 @@ class CustomersUsersController extends Controller {
             $old_total = $request->total_spent;
             $new_total = intval($get_customers["total_spent"]);
             $settlement = $new_total - $old_total;
-            $new_points = intval($settlement / 50);
+            $new_points = intval($settlement / $points->points_settings);
 
             return view('customers.calpoints', [
                 'customers_id' => $request->customers_id,
@@ -111,7 +120,11 @@ class CustomersUsersController extends Controller {
     }
 
     public function AddPoints(Request $request) {
-        if (intval($request->settlement) < 50) {
+        $points_settings = PointsSettings::all();
+        foreach ($points_settings as $points) {
+            
+        }
+        if (intval($request->settlement) < $points->points_settings) {
             return redirect()->action('CustomersUsersController@index');
         }
         try {

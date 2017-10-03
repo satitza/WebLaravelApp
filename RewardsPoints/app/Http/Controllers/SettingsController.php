@@ -18,6 +18,11 @@ class SettingsController extends Controller {
     public function index() {
         return view('settings.index');
     }
+    
+    public function pointsIndex(){
+        return view('settings.pointssettings');
+    }
+
 
     /**
      * Show the form for creating a new resource.

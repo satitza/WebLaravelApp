@@ -27,6 +27,7 @@ Route::resource('/rewardsstock', 'RewardsStockController');
 Route::resource('/rewardshistory', 'RewardsHistoryController');
 
 
+
 Route::get('/addrewards', 'RewardsStockController@ShowFormAddReward');
 Route::get('/editrewards', 'RewardsStockController@ShowFormEditReward');
 Route::get('/rewardsstock_delete/{id}', 'RewardsStockController@DeleteReward');
@@ -37,9 +38,6 @@ Route::post('/ordertetial', 'RewardsHistoryController@OrderDetial');
 Route::post('/rewardshistory/success', 'RewardsHistoryController@OrderSuccess');
 Route::post('/rewardshistory/stop', 'RewardsHistoryController@OrderStop');
 
-
-
-
 Route::post('/findcustomers', 'CustomersUsersController@FindCustomers');
 Route::post('/calpoints', 'CustomersUsersController@CalPoints');
 Route::post('/addpoints', 'CustomersUsersController@AddPoints');
@@ -47,3 +45,5 @@ Route::post('/addpoints', 'CustomersUsersController@AddPoints');
 
 Route::get('/promotions/{key}', 'PromotionsController@index');
 Route::post('/dealrewards', 'PromotionsController@DealRewards');
+
+Route::get('/points', 'SettingsController@pointsIndex');

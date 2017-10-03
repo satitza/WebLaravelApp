@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         //$this->call(WCHostSeeder::class);
-        $this->call(CreateAdminSeeder::class);
+        //$this->call(CreateAdminSeeder::class);
         //$this->call(OrdersStatusSeeder::class);
+        $this->call(PointsSettingsSeeder::class);
     }
 }
