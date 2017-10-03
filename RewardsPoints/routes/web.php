@@ -47,3 +47,4 @@ Route::get('/promotions/{key}', 'PromotionsController@index');
 Route::post('/dealrewards', 'PromotionsController@DealRewards');
 
 Route::get('/points', 'SettingsController@pointsIndex');
+Route::post('/updatepoints', 'SettingsController@UpdatePoints');

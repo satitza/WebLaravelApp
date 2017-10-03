@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\PointsSettings;
 use Illuminate\Http\Request;
+use App\Http\Requests\SettingsRequest;
 
 class SettingsController extends Controller {
 
@@ -18,11 +21,34 @@ class SettingsController extends Controller {
     public function index() {
         return view('settings.index');
     }
-    
-    public function pointsIndex(){
-        return view('settings.pointssettings');
+
+    public function pointsIndex() {
+        try {
+            $points = PointsSettings::all();
+            foreach ($points as $point) {
+                
+            }
+
+            return view('settings.pointssettings', [
+                'points' => $point,
+            ]);
+        } catch (Exception $e) {
+            
+        }
     }
 
+    public function UpdatePoints(SettingsRequest $request) {
+        try {
+            DB::beginTransaction();
+            $table1 = PointsSettings::find(1);
+            $table1->points_settings = $request->points_settings;
+            $table1->update();
+            DB::commit();
+            return redirect()->action('SettingsController@pointsIndex');
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
