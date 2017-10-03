@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -94,8 +96,25 @@
         </div>
     </div>
 </div>
-
-<footer>
-    The Founder Corp Rewards Points
+<br></br>
+<br></br>
+<br></br>
+<!--Footer-->
+<footer class="footer-background">
+    <center>
+        <a href="http://www.thefounders.world" class="fa fa-internet-explorer" style="font-size:36px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.facebook.com/thefoundersteam/" class="fa fa-facebook-square" style="font-size:36px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="fa fa-youtube" style="font-size:36px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="fa fa-tumblr-square" style="font-size:36px"></a>
+    </center>
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2015 Copyright: <a href="http://www.thefounders.world"> The Founders Corp </a>
+        </div>
+    </div>
+    <!--/.Copyright-->
 </footer>
+<!--/.Footer-->
 @endsection
+
